@@ -16,9 +16,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
-    "release": "release-it",
-    "example": "yarn --cwd example",
-    "bootstrap": "yarn example && yarn install"
+    "example": "yarn --cwd example"
   },
   "keywords": [
     "react-native",
@@ -97,36 +95,10 @@
       }
     }
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native-community",
-      "prettier"
-    ],
-    "rules": {
-      "prettier/prettier": [
-        "error",
-        {
-          "quoteProps": "consistent",
-          "singleQuote": true,
-          "tabWidth": 2,
-          "trailingComma": "es5",
-          "useTabs": false
-        }
-      ]
-    }
-  },
   "eslintIgnore": [
     "node_modules/",
     "lib/"
   ],
-  "prettier": {
-    "quoteProps": "consistent",
-    "singleQuote": true,
-    "tabWidth": 2,
-    "trailingComma": "es5",
-    "useTabs": false
-  },
   "react-native-builder-bob": {
     "source": "src",
     "output": "lib",

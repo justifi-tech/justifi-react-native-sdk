@@ -1,28 +1,27 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "paths": {
-      "justifi-react-native-sdk": ["./src/index"]
-    },
+    "baseUrl": ".",
+    "paths": { "@stripe/stripe-react-native": ["./src/index"] },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "esModuleInterop": true,
+    "isolatedModules": true,
     "importsNotUsedAsValues": "error",
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": ["esnext"],
-    "module": "esnext",
+    "lib": ["ES6"],
+    "module": "commonjs",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitReturns": true,
     "noImplicitUseStrict": false,
     "noStrictGenericChecks": false,
-    "noUncheckedIndexedAccess": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "types": ["node", "jest"]
   }
 }

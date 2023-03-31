@@ -1,5 +1,7 @@
-const path = require('path');
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const pak = require('../package.json');
+const path = require('path');
 
 module.exports = function (api) {
   api.cache(true);

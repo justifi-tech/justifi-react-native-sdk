@@ -16,7 +16,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "prepack": "bob build",
-    "example": "yarn --cwd example"
+    "example": "yarn --cwd example",
+    "bootstrap": "yarn example && yarn install"
   },
   "keywords": [
     "react-native",

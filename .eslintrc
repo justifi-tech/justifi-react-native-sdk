@@ -9,5 +9,9 @@
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": 0
+  },
+  "env": {
+    "node": true,
+    "es2021": true
   }
 }

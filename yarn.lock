@@ -8035,7 +8035,14 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^2.0.5:
+prettier-plugin-sort-imports@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/prettier-plugin-sort-imports/-/prettier-plugin-sort-imports-1.7.1.tgz#b032ce980b5105ffaf497266dc000e9676300882"
+  integrity sha512-NSFDOdr2xy+pJtK9auCHJb23NaaAEEmNveh94K7xQErMahUuhlhDTpAotQcZQqdo1C7NFOgEn5Le9BWo77j3zg==
+  dependencies:
+    prettier "^2.5.1"
+
+prettier@^2.0.5, prettier@^2.5.1:
   version "2.8.7"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.8.7.tgz#bb79fc8729308549d28fe3a98fce73d2c0656450"
   integrity sha512-yPngTo3aXUUmyuTjeTUT75txrf+aMh9FiD7q9ZE/i6r0bPb22g4FsE6Y338PQX1bmfy08i9QQCB7/rcUAVntfw==

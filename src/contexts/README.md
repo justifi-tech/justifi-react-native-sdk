@@ -1,0 +1,1 @@
+# We will use this folder to manage all the contexts that will be used for the global application state. We must maintain as small as possible and only use global states for stuff that we do need to have and share between components.

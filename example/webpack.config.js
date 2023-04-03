@@ -1,6 +1,8 @@
-const path = require('path');
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const createExpoWebpackConfigAsync = require('@expo/webpack-config');
 const { resolver } = require('./metro.config');
+const path = require('path');
 
 const root = path.resolve(__dirname, '..');
 const node_modules = path.join(__dirname, 'node_modules');

@@ -1,4 +1,4 @@
-package com.justify;
+package com.justifi;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

@@ -6317,6 +6317,10 @@ jsonfile@^6.0.1:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
+"justifi-react-native-sdk@git+ssh://git@github.com:xseedit/justifi-react-native-sdk.git":
+  version "0.1.0"
+  resolved "git+ssh://git@github.com:xseedit/justifi-react-native-sdk.git#7384ea8b820280c677284de1c0e7c73245349377"
+
 killable@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/killable/-/killable-1.0.1.tgz#4c8ce441187a061c7474fb87ca08e2a638194892"

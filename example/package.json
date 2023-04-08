@@ -15,7 +15,7 @@
     "react-native": "0.71.4",
     "react-dom": "18.2.0",
     "react-native-web": "~0.18.10",
-    "justifi-react-native-sdk": "git+ssh://git@github.com:xseedit/justifi-react-native-sdk.git"
+    "justifi-react-native-sdk": "file:../"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -1,11 +1,13 @@
 import {BankAccountForm} from 'justifi-react-native-sdk';
-import {useState} from 'react';
+import {CardForm} from 'justifi-react-native-sdk';
+import {useRef, useState} from 'react';
 import * as React from 'react';
 
 import {StyleSheet, View, Button, Text} from 'react-native';
 
 export default function App() {
   const [view, setView] = useState('menu');
+  // const inputRef = useRef(null);
 
   const renderContent = () => {
     switch (view) {
@@ -13,9 +15,12 @@ export default function App() {
         return (
           <View style={styles.box}>
             <Text>Bank Account Form</Text>
-            {/* <BankAccountForm
-              style={{height: 200, width: '100%', backgroundColor: 'red'}}
-            /> */}
+            {
+              // <BankAccountForm
+              //   style={{height: 200, width: '100%', backgroundColor: 'red'}}
+              //   ref={inputRef}
+              // />
+            }
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );
@@ -23,7 +28,12 @@ export default function App() {
         return (
           <View style={styles.box}>
             <Text>Card Form</Text>
-            {/* <CardForm /> */}
+            {
+              // <CardForm
+              //   style={{height: 200, width: '100%', backgroundColor: 'red'}}
+              //   ref={inputRef}
+              // />
+            }
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );

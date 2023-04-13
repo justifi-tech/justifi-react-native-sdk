@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Justifi</string>
+
+    <!-- Card -->
+    <string name="card_number">Card Number</string>
+    <string name="card_number_hint">1234 1234 1234 1234</string>
+    <string name="expiration">Expiration</string>
+    <string name="expiration_mm">MM</string>
+    <string name="expiration_yy">YY</string>
+    <string name="cvv">CVV</string>
+
+    <!-- Bank Account -->
+    <string name="routing_number">Routing Number</string>
+    <string name="account_number">Account Number</string>
 </resources>

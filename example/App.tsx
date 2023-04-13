@@ -1,13 +1,13 @@
 import {BankAccountForm} from 'justifi-react-native-sdk';
 import {CardForm} from 'justifi-react-native-sdk';
-import {useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import * as React from 'react';
 
 import {StyleSheet, View, Button, Text} from 'react-native';
 
 export default function App() {
   const [view, setView] = useState('menu');
-  // const inputRef = useRef(null);
+  // const inputRef = useRef();
 
   const renderContent = () => {
     switch (view) {

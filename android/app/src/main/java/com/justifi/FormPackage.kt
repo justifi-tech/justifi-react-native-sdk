@@ -7,15 +7,15 @@ import com.facebook.react.uimanager.ViewManager
 
 class FormPackage : ReactPackage {
 
-    override fun createNativeModules(
-        reactContext: ReactApplicationContext
-    ): MutableList<NativeModule> = mutableListOf()
+  override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
+    return listOf(CardViewManager(reactContext))
+  }
 
-    override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
-        return listOf<ViewManager<*, *>>(
-            BankAccountManager(reactContext),
-            CardViewManager(reactContext)
-        )
-    }
+  override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
+    return listOf<ViewManager<*, *>>(
+      BankAccountManager(reactContext),
+      CardViewManager(reactContext)
+    )
+  }
 
 }

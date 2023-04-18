@@ -1,24 +1,28 @@
 import {
-  AccessibilityProps,
-  requireNativeComponent,
+  NativeSyntheticEvent,
   StyleProp,
   ViewStyle,
+  requireNativeComponent,
 } from 'react-native';
 import type { CardFormView } from '../types';
-import React, { forwardRef } from 'react';
-
-const CardFormNative =
-  requireNativeComponent<CardFormView.NativeProps>('CardFormView');
+import React from 'react';
 
 /**
  *  Card Form Component Props
  */
-export interface Props extends AccessibilityProps {
+export interface Props extends CardFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
+  styleOverrides?: string;
+  validationStrategy?: string;
 }
 
-//TODO: add @example
+const CardFormNative = requireNativeComponent<Props>('CardFormView');
 
-export const CardForm = forwardRef<Props>(({ props, ref }: any) => {
-  return <CardFormNative {...props} ref={ref} />;
-});
+function handleLoad() {
+  // Handle onLoad event
+  console.log('handleLoad react');
+}
+
+export const CardForm: React.FC<Props> = (props) => {
+  return <CardFormNative {...props} />;
+};

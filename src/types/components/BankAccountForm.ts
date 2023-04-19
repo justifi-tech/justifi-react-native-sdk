@@ -1,5 +1,5 @@
-import type { StyleProp, ViewStyle } from 'react-native';
-
 export interface NativeProps {
-  style?: StyleProp<ViewStyle>;
+  styleOverrides?: object;
 }
+
+export interface BankAccountFormView extends NativeProps {}

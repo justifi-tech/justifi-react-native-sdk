@@ -4,7 +4,7 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native';
-// import type { BankAccountFormView } from '../types';
+import type { BankAccountFormView } from '../types';
 import React, { forwardRef } from 'react';
 
 const BankAccountFormNative: any = requireNativeComponent(
@@ -16,14 +16,16 @@ export interface Props extends AccessibilityProps {
   styleOverrides?: object;
 }
 
-export const BankAccountForm = forwardRef<any, Props>((props, ref) => {
-  const styleOverrides = { ...props.styleOverrides };
+export const BankAccountForm = forwardRef<BankAccountFormView.Styles, Props>(
+  (props, ref) => {
+    const styleOverrides = { ...props.styleOverrides };
 
-  return (
-    <BankAccountFormNative
-      {...props}
-      {...(styleOverrides ? styleOverrides : null)}
-      ref={ref}
-    />
-  );
-});
+    return (
+      <BankAccountFormNative
+        {...props}
+        {...(styleOverrides ? styleOverrides : null)}
+        ref={ref}
+      />
+    );
+  },
+);

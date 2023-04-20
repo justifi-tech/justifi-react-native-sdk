@@ -1,5 +1,3 @@
-export interface NativeProps {
+export interface Styles {
   styleOverrides?: object;
 }
-
-export interface BankAccountFormView extends NativeProps {}

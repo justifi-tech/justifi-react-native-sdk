@@ -7,7 +7,6 @@ import android.graphics.Typeface
 
 import android.util.Log
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.facebook.react.uimanager.ThemedReactContext
 import org.json.JSONObject
 
@@ -37,6 +36,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
 
   private var formLabelWeight = Typeface.NORMAL
   private var formLabelFontFamily =  "sans-serif"
+  private var formLabelMargin = JSONObject()
 
 
   init {
@@ -49,8 +49,8 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
       customLayout()
 
       // Card number
-      val cardNumberTitle : TextView = findViewById(R.id.card_num_title)
-      setupTitle(cardNumberTitle)
+      val cardNumberTitle : LabelView = findViewById(R.id.card_num_title)
+      cardNumberTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
 
       val cardNumber : InputView = findViewById(R.id.cardNumber)
       cardNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
@@ -58,8 +58,8 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
         formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
       // Expiration
-      val expirationTitle : TextView = findViewById(R.id.expiration_title)
-      setupTitle(expirationTitle)
+      val expirationTitle : LabelView = findViewById(R.id.expiration_title)
+      expirationTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
 
       val expirationMM : InputView = findViewById(R.id.mm)
       expirationMM.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
@@ -72,8 +72,8 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
         formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
       // CVV
-      val cvvTitle : TextView = findViewById(R.id.cvv_title)
-      setupTitle(cvvTitle)
+      val cvvTitle : LabelView = findViewById(R.id.cvv_title)
+      cvvTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
 
       val cvvNumber : InputView = findViewById(R.id.cvv)
       cvvNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
@@ -163,6 +163,9 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     if(formLabel.has("fontFamily")) {
       formLabelFontFamily = formLabel.getString("fontFamily")
     }
+    if (formLabel.has("margin")) {
+      formLabelMargin = formLabel.getJSONObject("margin")
+    }
   }
 
   private fun customLayout() {
@@ -188,21 +191,6 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
 
   fun setValidationStrategy(validation: String) {
     validationStrategy = validation
-  }
-
-  private fun setupTitle(view: TextView) {
-    val myTypeface = Typeface.create(formLabelFontFamily, formLabelWeight)
-    view.typeface = myTypeface
-
-    if (formLabel.has("margin")) {
-      val formLabelMargin = formLabel.getJSONObject("margin")
-      val bottom = if (formLabelMargin.has("bottom")) formLabelMargin.getInt("bottom") else 0
-      val top = if (formLabelMargin.has("top")) formLabelMargin.getInt("top") else 0
-      val left = if (formLabelMargin.has("left")) formLabelMargin.getInt("left") else 0
-      val right = if (formLabelMargin.has("right"))formLabelMargin.getInt("right") else 0
-      val param = view.layoutParams as MarginLayoutParams
-      param.setMargins(left, top, right, bottom)
-    }
   }
 
   fun validateFields() : Boolean {

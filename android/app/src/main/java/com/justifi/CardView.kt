@@ -1,23 +1,18 @@
+@file:Suppress("NAME_SHADOWING")
+
 package com.justifi
 
-import android.annotation.SuppressLint
 import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.GradientDrawable
 
-import android.text.InputType
 import android.util.Log
-import android.util.TypedValue
-import android.view.MotionEvent
-import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.facebook.react.uimanager.ThemedReactContext
 import org.json.JSONObject
 
-
-class CardView : LinearLayout {
-  private var callerContext: ThemedReactContext
+class CardView(context: ThemedReactContext) : LinearLayout(context) {
+  private var callerContext: ThemedReactContext = context
 
   private var errorMessage: JSONObject = JSONObject()
   private var formControl: JSONObject = JSONObject()
@@ -29,22 +24,22 @@ class CardView : LinearLayout {
   private var formControlBorderColor = Color.GRAY
   private var formControlBorderColorHover = Color.GRAY
   private var formControlBorderColorFocus = Color.GRAY
-  private var formControlMargin = 8
-  private var formControlPadding: JSONObject = JSONObject()
+  private var formControlBackgroundColorHover = Color.GRAY
   private var formControlColor = Color.BLACK
   private var formControlErrorColor = Color.RED
+  private var formControlPadding: JSONObject = JSONObject()
+  private var formControlBorderRadius : JSONObject = JSONObject()
+  private var formControlMargin = 8
   private var formControlBorderWidth = 2
   private var formControlLineHeight = 80
   private var formControlFontSize = 50
   private var formControlFontWeight = Typeface.NORMAL
-  private var formControlBorderRadius : JSONObject = JSONObject()
 
   private var formLabelWeight = Typeface.NORMAL
   private var formLabelFontFamily =  "sans-serif"
 
 
-  constructor(context: ThemedReactContext) : super(context) {
-    this.callerContext = context
+  init {
     init()
   }
 
@@ -57,25 +52,33 @@ class CardView : LinearLayout {
       val cardNumberTitle : TextView = findViewById(R.id.card_num_title)
       setupTitle(cardNumberTitle)
 
-      val cardNumber : EditText = findViewById(R.id.cardNumber)
-      setupEditText(cardNumber)
+      val cardNumber : InputView = findViewById(R.id.cardNumber)
+      cardNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
+        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
       // Expiration
       val expirationTitle : TextView = findViewById(R.id.expiration_title)
       setupTitle(expirationTitle)
 
-      val expirationMM : EditText = findViewById(R.id.mm)
-      setupEditText(expirationMM)
+      val expirationMM : InputView = findViewById(R.id.mm)
+      expirationMM.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
+        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
-      val expirationYY : EditText = findViewById(R.id.yy)
-      setupEditText(expirationYY)
+      val expirationYY : InputView = findViewById(R.id.yy)
+      expirationYY.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
+        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
       // CVV
       val cvvTitle : TextView = findViewById(R.id.cvv_title)
       setupTitle(cvvTitle)
 
-      val cvvNumber : EditText = findViewById(R.id.cvv)
-      setupEditText(cvvNumber)
+      val cvvNumber : InputView = findViewById(R.id.cvv)
+      cvvNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
+        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
     } catch (ex: Exception) {
       Log.e("init", ex.toString())
@@ -99,13 +102,11 @@ class CardView : LinearLayout {
     } catch (ex: Exception) {
       Log.e("setStyleOverrides", ex.toString())
     }
-
   }
 
   private fun parseValues() {
     if (formControl.has("backgroundColor")) {
       val backgroundColor = formControl.getString("backgroundColor")
-      Log.d("TAG backgroundColor", backgroundColor.toString())
       formControlBackgroundColor = Color.parseColor(backgroundColor)
     }
 
@@ -144,6 +145,10 @@ class CardView : LinearLayout {
     }
     if(formControl.has("borderRadius")) {
       formControlBorderRadius = formControl.getJSONObject("borderRadius")
+    }
+    if(formControl.has("backgroundColorHover")) {
+      val formControlBackgroundHover = formControl.getString("backgroundColorHover")
+      formControlBackgroundColorHover = Color.parseColor(formControlBackgroundHover)
     }
 
     if(errorMessage.has("color")) {
@@ -200,93 +205,34 @@ class CardView : LinearLayout {
     }
   }
 
-  @SuppressLint("ClickableViewAccessibility")
-  private fun setupEditText(view: EditText) {
-    view.inputType = InputType.TYPE_CLASS_NUMBER
-    view.setBackgroundColor(formControlBackgroundColor)
-    view.setTextColor(formControlColor)
-
-    view.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-    val param = view.layoutParams as MarginLayoutParams
-    param.setMargins(formControlMargin, formControlMargin, formControlMargin, formControlMargin)
-    param.height = formControlLineHeight
-    view.layoutParams = param
-    val bottom = if (formControlPadding.has("bottom")) formControlPadding.getInt("bottom") else 0
-    val top = if (formControlPadding.has("top")) formControlPadding.getInt("top") else 0
-    val left = if (formControlPadding.has("left")) formControlPadding.getInt("left") else 0
-    val right = if (formControlPadding.has("right"))formControlPadding.getInt("right") else 0
-    view.setPadding(left, top, right, bottom)
-
-    val pixelSize = formControlFontSize // en píxeles
-    val displayMetrics = resources.displayMetrics
-    val spSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, pixelSize.toFloat(), displayMetrics) / displayMetrics.scaledDensity
-    view.setTextSize(TypedValue.COMPLEX_UNIT_SP, spSize)
-    view.setTypeface(null, formControlFontWeight)
-
-    val gd = getDrawable()
-    if(formControl.has("backgroundColorHover")) {
-      val formControlBackgroundHover = formControl.getString("backgroundColorHover")
-      val formControlBackgroundColorHover = Color.parseColor(formControlBackgroundHover)
-      view.setOnTouchListener { view, event ->
-        when (event.action) {
-          MotionEvent.ACTION_DOWN -> {
-            view.setBackgroundColor(formControlBackgroundColorHover)
-          }
-          MotionEvent.ACTION_UP -> {
-            view.setBackgroundColor(formControlBackgroundColor)
-            view.background = gd
-          }
-        }
-        true
-      }
-    }
-    view.background = gd
-  }
-
-  private fun getDrawable(): GradientDrawable {
-    val topLeft = if (formControlBorderRadius.has("topLeft")) formControlBorderRadius.getInt("topLeft") else 0
-    val topRight = if (formControlBorderRadius.has("topRight"))formControlBorderRadius.getInt("topRight") else 0
-    val bottomRight = if (formControlBorderRadius.has("bottomRight")) formControlBorderRadius.getInt("bottomRight") else 0
-    val bottomLeft = if (formControlBorderRadius.has("bottomLeft")) formControlBorderRadius.getInt("bottomLeft") else 0
-
-    val gd = GradientDrawable()
-    gd.setStroke(formControlBorderWidth, formControlBorderColor)
-    gd.setColor(formControlBackgroundColor)
-    gd.cornerRadii = floatArrayOf(
-      topLeft.toFloat(),
-      topLeft.toFloat(),
-      topRight.toFloat(),
-      topRight.toFloat(),
-      bottomRight.toFloat(),
-      bottomRight.toFloat(),
-      bottomLeft.toFloat(),
-      bottomLeft.toFloat()
-    )
-    return gd
-  }
-
-  fun validateFields() {
-    val cardNumber : EditText = findViewById(R.id.cardNumber)
-    val expirationMM : EditText = findViewById(R.id.mm)
-    val expirationYY : EditText = findViewById(R.id.yy)
-    val cvvNumber : EditText = findViewById(R.id.cvv)
+  fun validateFields() : Boolean {
+    val cardNumber : InputView = findViewById(R.id.cardNumber)
+    val expirationMM : InputView = findViewById(R.id.mm)
+    val expirationYY : InputView = findViewById(R.id.yy)
+    val cvvNumber : InputView = findViewById(R.id.cvv)
     val errorTitle = resources.getString(R.string.error_msg)
-    if (cardNumber.text.length < 16) {
+
+    if (!Utils.validCard(cardNumber.text.toString())) {
       cardNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
       cardNumber.requestFocus()
+      return false
     }
-    if (expirationMM.text.length < 2) {
+    if (!Utils.validMM(expirationMM.text.toString())) {
       expirationMM.error = Utils.buildError(formControlErrorColor, errorTitle)
       expirationMM.requestFocus()
+      return false
     }
-    if (expirationYY.text.length < 2) {
+    if (!Utils.validYY(expirationYY.text.toString())) {
       expirationYY.error = Utils.buildError(formControlErrorColor, errorTitle)
       expirationYY.requestFocus()
+      return false
     }
-    if (cvvNumber.text.length < 4) {
+    if (!Utils.validCVV(cvvNumber.text.toString())) {
       cvvNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
       cvvNumber.requestFocus()
+      return false
     }
+    return true
   }
 
 }

@@ -8,13 +8,13 @@ import com.facebook.react.uimanager.ViewManager
 class FormPackage : ReactPackage {
 
   override fun createNativeModules(reactContext: ReactApplicationContext): List<NativeModule> {
-    return listOf(CardViewManager(reactContext))
+    return listOf(CardViewManager())
   }
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
     return listOf<ViewManager<*, *>>(
       BankAccountManager(reactContext),
-      CardViewManager(reactContext)
+      CardViewManager()
     )
   }
 

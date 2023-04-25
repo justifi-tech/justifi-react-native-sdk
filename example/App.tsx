@@ -1,4 +1,5 @@
 // import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
+// import {CardForm} from 'justifi-react-native-sdk';
 import {useState} from 'react';
 import * as React from 'react';
 
@@ -84,7 +85,13 @@ export default function App() {
         return (
           <View style={styles.box}>
             <Text>Card Form</Text>
-            {/* <CardForm /> */}
+            {
+              // <CardForm
+              //   style={{height: '100%', width: '100%'}}
+              //   styleOverrides={JSON.stringify(styleOverrides)}
+              //   validationStrategy={validateCustom}
+              // />
+            }
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );

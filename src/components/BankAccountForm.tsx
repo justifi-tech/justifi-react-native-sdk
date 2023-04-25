@@ -21,6 +21,6 @@ export interface Props extends AccessibilityProps {
 
 //TODO: add @example
 
-export const BankAccountForm = forwardRef<Props>(({ props, ref }: any) => {
-  return <BankAccountFormNative {...props} ref={ref} />;
-});
+export const BankAccountForm: React.FC<Props> = (props) => {
+  return <BankAccountFormNative {...props} />;
+};

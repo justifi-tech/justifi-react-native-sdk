@@ -1,9 +1,4 @@
-import {
-  NativeSyntheticEvent,
-  StyleProp,
-  ViewStyle,
-  requireNativeComponent,
-} from 'react-native';
+import { StyleProp, ViewStyle, requireNativeComponent } from 'react-native';
 import type { CardFormView } from '../types';
 import React from 'react';
 
@@ -17,11 +12,6 @@ export interface Props extends CardFormView.NativeProps {
 }
 
 const CardFormNative = requireNativeComponent<Props>('CardFormView');
-
-function handleLoad() {
-  // Handle onLoad event
-  console.log('handleLoad react');
-}
 
 export const CardForm: React.FC<Props> = (props) => {
   return <CardFormNative {...props} />;

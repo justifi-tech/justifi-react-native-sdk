@@ -6,6 +6,7 @@ module.exports = async () => {
     modulePathIgnorePatterns: [
       '<rootDir>/example/node_modules',
       '<rootDir>/lib/',
+      '<rootDir>/example/',
     ],
   };
 };

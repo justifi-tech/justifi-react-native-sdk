@@ -1,4 +1,4 @@
-import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
+// import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
 import {useState} from 'react';
 import * as React from 'react';
 
@@ -7,15 +7,15 @@ import {StyleSheet, View, Button, Text} from 'react-native';
 export default function App() {
   const [view, setView] = useState('menu');
 
-  const handleValidate = async () => {
-    const isValid = await validate();
-    console.log('Form is valid:', isValid);
-  };
+  // const handleValidate = async () => {
+  //   const isValid = await validate();
+  //   console.log('Form is valid:', isValid);
+  // };
 
-  const handleTokenize = async () => {
-    const tokenizedData = await tokenize();
-    console.log('Tokenized data:', tokenizedData);
-  };
+  // const handleTokenize = async () => {
+  //   const tokenizedData = await tokenize();
+  //   console.log('Tokenized data:', tokenizedData);
+  // };
 
   const layout = {
     padding: 0, //working
@@ -68,13 +68,13 @@ export default function App() {
         return (
           <View style={styles.box}>
             <Text>Bank Account Form</Text>
-            <BankAccountForm
+            {/* <BankAccountForm
               style={{height: 200, width: '80%'}}
               styleOverrides={styleOverrides}
-            />
+            /> */}
             <View>
-              <Button title="Tokenize" onPress={handleTokenize} />
-              <Button title="Validate" onPress={handleValidate} />
+              {/* <Button title="Tokenize" onPress={handleTokenize} />
+              <Button title="Validate" onPress={handleValidate} /> */}
             </View>
 
             <Button title="Back to Menu" onPress={() => setView('menu')} />

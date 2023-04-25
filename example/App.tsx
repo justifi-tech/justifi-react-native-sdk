@@ -67,11 +67,11 @@ export default function App() {
           <View style={styles.box}>
             <Text>Card Form</Text>
             {
-              <CardForm
-                style={{height: '100%', width: '100%'}}
-                styleOverrides={JSON.stringify(stylesCustom)}
-                validationStrategy={validateCuston}
-              />
+              // <CardForm
+              //   style={{height: '100%', width: '100%'}}
+              //   styleOverrides={JSON.stringify(stylesCustom)}
+              //   validationStrategy={validateCuston}
+              // />
             }
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>

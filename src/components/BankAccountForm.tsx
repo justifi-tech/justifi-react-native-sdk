@@ -5,7 +5,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import type { BankAccountFormView } from '../types';
-import React, { forwardRef } from 'react';
+import React from 'react';
 
 const BankAccountFormNative =
   requireNativeComponent<BankAccountFormView.NativeProps>(

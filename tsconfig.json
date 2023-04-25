@@ -4,6 +4,16 @@
     "paths": { "@stripe/stripe-react-native": ["./src/index"] },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
+    "overrides": [
+      {
+        "files": ["*.js"],
+        "rules": {
+          "@typescript-eslint/no-var-requires": "off",
+          "no-undef": "off",
+          "no-unused-vars": "off"
+        }
+      }
+    ],
     "esModuleInterop": true,
     "isolatedModules": true,
     "importsNotUsedAsValues": "error",

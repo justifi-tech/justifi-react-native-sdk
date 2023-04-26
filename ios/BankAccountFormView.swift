@@ -1,56 +1,94 @@
 import UIKit
-import Foundation
+
+extension NSLayoutConstraint {
+  @discardableResult func with(priority: UILayoutPriority) -> NSLayoutConstraint {
+    self.priority = priority
+    return self
+  }
+}
 
 @objc(BankAccountFormView)
 class BankAccountFormView: UIView {
-    private let routingNumberTextField = UITextField()
-    private let accountNumberTextField = UITextField()
+    private let routingNumberField = FieldView()
+    private let accountNumberField = FieldView()
     private let stackView = UIStackView()
+  
 
+    @objc var formLabel: NSDictionary = [:] {
+        didSet {
+            routingNumberField.formLabel = formLabel
+            accountNumberField.formLabel = formLabel
+        }
+    }
+
+    @objc var formControl: NSDictionary = [:] {
+        didSet {
+            routingNumberField.formControl = formControl
+            accountNumberField.formControl = formControl
+        }
+    }
+
+    @objc var errorMessage: NSDictionary = [:] {
+        didSet {
+            routingNumberField.errorMessage = errorMessage
+            accountNumberField.errorMessage = errorMessage
+        }
+    }
+    @objc var layout: NSDictionary = [:] {
+        didSet {
+            updateLayout()
+        }
+    }
 
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupForm()
     }
-    
+
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setupForm()
     }
 
-    private func setupForm() {
-        routingNumberTextField.placeholder = "Routing Number"
-        applyTextFieldStyle(to: routingNumberTextField)
+  private func setupForm() {
+    
+    
+      routingNumberField.labelText = "Routing Number"
+      accountNumberField.labelText = "Account Number"
 
-        accountNumberTextField.placeholder = "Account Number"
-        applyTextFieldStyle(to: accountNumberTextField)
+      routingNumberField.placeholderText = "Enter routing number"
+      accountNumberField.placeholderText = "Enter account number"
 
-        stackView.axis = .vertical
-        stackView.spacing = 16
-        stackView.addArrangedSubview(routingNumberTextField)
-        stackView.addArrangedSubview(accountNumberTextField)
-
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: topAnchor),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
+      stackView.axis = .vertical
+      stackView.spacing = 16
+      stackView.addArrangedSubview(routingNumberField)
+      stackView.addArrangedSubview(accountNumberField)
+      stackView.distribution = .fillProportionally
+      addSubview(stackView)
+      stackView.translatesAutoresizingMaskIntoConstraints = false
+      
+      let heightConstraint = stackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 200)
+      heightConstraint.priority = .defaultHigh
+      heightConstraint.isActive = true
+      
+      NSLayoutConstraint.activate([
+          stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+          stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
+          stackView.topAnchor.constraint(equalTo: topAnchor),
+          stackView.bottomAnchor.constraint(equalTo: bottomAnchor)
+      ])
+  }
+  
+  private func updateLayout() {
+    if let padding = layout["padding"] as? CGFloat {
+      stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
+      stackView.isLayoutMarginsRelativeArrangement = true
     }
 
-    private func applyTextFieldStyle(to textField: UITextField) {
-        textField.backgroundColor = .white
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.borderWidth = 1.0
-        textField.layer.cornerRadius = 5.0
-        textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 8, height: textField.frame.height))
-        textField.leftViewMode = .always
+    if let formControlSpacingVertical = layout["formControlSpacingVertical"] as? CGFloat {
+      stackView.spacing = formControlSpacingVertical
     }
-
-    @objc static func requiresMainQueueSetup() -> Bool { return true }
+  }
 
 }
-

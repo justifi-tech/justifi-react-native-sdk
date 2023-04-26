@@ -14,7 +14,7 @@
   "scripts": {
     "test": "jest",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "lint": "eslint \"**/*.{ts,tsx}\"",
     "prepack": "bob build",
     "example": "yarn --cwd example",
     "bootstrap": "yarn example && yarn install"

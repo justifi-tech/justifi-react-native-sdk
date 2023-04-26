@@ -1,4 +1,4 @@
-package com.justifi
+package com.justifi.ui
 
 import android.content.Context
 import android.graphics.Typeface

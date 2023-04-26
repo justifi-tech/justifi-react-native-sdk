@@ -1,6 +1,6 @@
 @file:Suppress("NAME_SHADOWING")
 
-package com.justifi
+package com.justifi.ui
 
 import android.graphics.Color
 import android.graphics.Typeface
@@ -8,6 +8,8 @@ import android.graphics.Typeface
 import android.util.Log
 import android.widget.LinearLayout
 import com.facebook.react.uimanager.ThemedReactContext
+import com.justifi.R
+import com.justifi.Utils
 import org.json.JSONObject
 
 class CardView(context: ThemedReactContext) : LinearLayout(context) {

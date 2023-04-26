@@ -1,17 +1,14 @@
-package com.justifi
+package com.justifi.ui
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.text.InputType
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.appcompat.widget.AppCompatTextView
+import com.justifi.Utils
 import org.json.JSONObject
 
 class InputView : AppCompatEditText {

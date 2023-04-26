@@ -1,5 +1,5 @@
 // import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
-// import {CardForm} from 'justifi-react-native-sdk';
+// import {CardForm, validateCard, tokenizeCard} from 'justifi-react-native-sdk';
 import {useState} from 'react';
 import * as React from 'react';
 
@@ -7,6 +7,24 @@ import {StyleSheet, View, Button, Text} from 'react-native';
 
 export default function App() {
   const [view, setView] = useState('menu');
+
+  // const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
+  // const CLIENT_SECRET =
+  //   'test_ZIRvzP5R4aWfeTq0vQjNgXmg1RL3r3fk-kM5jALXm8kRY_7XieYuWbbiN4grB-oX';
+
+
+  // const validateCuston = 'onSubmit';
+   // const handleValidateCard = async () => {
+  //   const isValid = await validateCard();
+  // };
+
+  // const handleTokenizeCard = async () => {
+  //   const token = await tokenizeCard(
+  //     CLIENT_ID,
+  //     'paymentMethodMetadata',
+  //     CLIENT_SECRET,
+  //   );
+  // };
 
   // const handleValidate = async () => {
   //   const isValid = await validate();
@@ -85,13 +103,17 @@ export default function App() {
         return (
           <View style={styles.box}>
             <Text>Card Form</Text>
-            {
-              // <CardForm
-              //   style={{height: '100%', width: '100%'}}
-              //   styleOverrides={JSON.stringify(styleOverrides)}
-              //   validationStrategy={validateCustom}
-              // />
-            }
+              {/* <CardForm
+                style={{height: '100%', width: '100%'}}
+                styleOverrides={JSON.stringify(styleOverrides)}
+                validationStrategy={validateCustom}
+              />
+              <View style={styles.button}>
+                <Button title="Tokenize" onPress={handleTokenizeCard} />
+              </View>
+              <View style={styles.button}>
+                <Button title="Validate" onPress={handleValidateCard} />
+              </View> */}
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );

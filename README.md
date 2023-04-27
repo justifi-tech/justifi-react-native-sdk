@@ -109,15 +109,15 @@ For more information, refer to the SDK documentation.
 
 #### Interfaces
     
-   **`BankAccountFormProps`**
-    This interface defines the props for the **`BankAccountForm`** component:
+ **`BankAccountFormProps`**
+    This interface defines the props for the **`BankAccountForm`** component
 
-        ``` javascript 
-            interface BankAccountFormProps extends AccessibilityProps {
+``` Typescript 
+        interface BankAccountFormProps extends AccessibilityProps {
                 style?: StyleProp<ViewStyle>;
                 styleOverrides?: object;
             }
-        ```
+```
                         
         | Prop Name | Type | Description |
         | --- | --- | --- |

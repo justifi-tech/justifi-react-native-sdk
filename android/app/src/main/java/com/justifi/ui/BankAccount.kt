@@ -1,4 +1,4 @@
-package com.justifi
+package com.justifi.ui
 
 import android.graphics.Color
 import android.text.InputFilter
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.facebook.react.uimanager.ThemedReactContext
+import com.justifi.R
 
 class BankAccount : LinearLayout {
   private var callerContext: ThemedReactContext

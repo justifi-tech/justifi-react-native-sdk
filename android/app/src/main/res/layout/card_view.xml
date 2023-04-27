@@ -7,14 +7,14 @@
   android:padding="32dp"
   >
 
-    <com.justifi.LabelView
+    <com.justifi.ui.LabelView
       android:id="@+id/card_num_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/card_number"
       android:textSize="16sp"/>
 
-    <com.justifi.InputView
+    <com.justifi.ui.InputView
       android:id="@+id/cardNumber"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -22,14 +22,14 @@
       android:layout_marginBottom="32dp"
       android:maxLength="16"/>
 
-    <com.justifi.LabelView
+    <com.justifi.ui.LabelView
       android:id="@+id/expiration_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/expiration"
       android:textSize="16sp"/>
 
-    <com.justifi.InputView
+    <com.justifi.ui.InputView
       android:id="@+id/mm"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
       android:hint="@string/expiration_mm"
       android:maxLength="2"/>
 
-    <com.justifi.InputView
+    <com.justifi.ui.InputView
       android:id="@+id/yy"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -45,14 +45,14 @@
       android:hint="@string/expiration_yy"
       android:maxLength="2"/>
 
-    <com.justifi.LabelView
+    <com.justifi.ui.LabelView
       android:id="@+id/cvv_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="@string/cvv"
       android:textSize="16sp"/>
 
-    <com.justifi.InputView
+    <com.justifi.ui.InputView
       android:id="@+id/cvv"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"

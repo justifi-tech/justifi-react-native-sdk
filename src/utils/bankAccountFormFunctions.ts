@@ -1,6 +1,7 @@
-import {NativeModules} from 'react-native';
+import { NativeModules } from 'react-native';
+import type { BankAccountFormView } from '../types';
 
-const {BankAccountFormFunctions} = NativeModules;
+const { BankAccountFormFunctions } = NativeModules;
 
 export async function validate(): Promise<boolean> {
   return new Promise(resolve => {
@@ -10,9 +11,9 @@ export async function validate(): Promise<boolean> {
   });
 }
 
-export async function tokenize(): Promise<any> {
+export async function tokenize(): Promise<BankAccountFormView.Token> {
   return new Promise(resolve => {
-    BankAccountFormFunctions.tokenize((token: any) => {
+    BankAccountFormFunctions.tokenize((token: BankAccountFormView.Token) => {
       resolve(token);
     });
   });

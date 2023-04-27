@@ -11,13 +11,17 @@ const BankAccountFormNative: any = requireNativeComponent(
   'BankAccountFormView',
 );
 
-export interface Props extends AccessibilityProps {
+export interface BankAccountFormProps extends AccessibilityProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
 }
 
-export const BankAccountForm = forwardRef<BankAccountFormView.Styles, Props>(
-  (props, ref) => {
+export interface BankAccountFormState {
+  // Define state types here, if any
+}
+
+export const BankAccountForm = forwardRef<BankAccountFormView.Styles, BankAccountFormProps>(
+  function BankAccountForm(props: BankAccountFormProps, ref: React.Ref<BankAccountFormView.Styles>) {
     const styleOverrides = { ...props.styleOverrides };
 
     return (

@@ -105,8 +105,7 @@ Please note that the **`BankAccountFormView`** component should be properly conf
 For more information, refer to the SDK documentation.
 
 ## BankAccountForm.tsx
-    
-    This file defines the **`BankAccountForm`** component, which renders a native view that allows users to input their bank account information for payment processing.
+ This file defines the **`BankAccountForm`** component, which renders a native view that allows users to input their bank account information for payment processing.
 
 #### Interfaces
     
@@ -114,12 +113,12 @@ For more information, refer to the SDK documentation.
     This interface defines the props for the **`BankAccountForm`** component:
 
         ``` typescript 
-        interface BankAccountFormProps extends AccessibilityProps {
-            style?: StyleProp<ViewStyle>;
-            styleOverrides?: object;
+            interface BankAccountFormProps extends AccessibilityProps {
+                style?: StyleProp<ViewStyle>;
+                styleOverrides?: object;
             }
         ```
-                
+                        
         | Prop Name | Type | Description |
         | --- | --- | --- |
         | `style` | `StyleProp<ViewStyle>` | Custom styles for the component |

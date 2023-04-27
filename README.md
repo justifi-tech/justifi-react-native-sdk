@@ -112,7 +112,7 @@ For more information, refer to the SDK documentation.
    **`BankAccountFormProps`**
     This interface defines the props for the **`BankAccountForm`** component:
 
-        ``` typescript 
+        ``` javascript 
             interface BankAccountFormProps extends AccessibilityProps {
                 style?: StyleProp<ViewStyle>;
                 styleOverrides?: object;

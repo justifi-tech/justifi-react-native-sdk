@@ -125,18 +125,18 @@ For more information, refer to the SDK documentation.
         | `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component |
 
 #### **`BankAccountForm`** Component
-    The **`BankAccountForm`** component is defined as follows:
+        The **`BankAccountForm`** component is defined as follows:
 
-    ``` typescript
-        const BankAccountForm = forwardRef<BankAccountFormView.Styles, BankAccountFormProps>(
-        function BankAccountForm(props: BankAccountFormProps, ref: React.Ref<BankAccountFormView.Styles>) {
-        const styleOverrides = { ...props.styleOverrides };
+ ``` typescript
+            const BankAccountForm = forwardRef<BankAccountFormView.Styles, BankAccountFormProps>(
+            function BankAccountForm(props: BankAccountFormProps, ref: React.Ref<BankAccountFormView.Styles>) {
+            const styleOverrides = { ...props.styleOverrides };
 
         return (
-      <     BankAccountFormNative
-            {...props}
-            {...(styleOverrides ? styleOverrides : null)}
-            ref={ref}
+        <     BankAccountFormNative
+                {...props}
+                {...(styleOverrides ? styleOverrides : null)}
+                ref={ref}
         />)
         ;}
     ,);

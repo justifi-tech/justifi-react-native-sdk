@@ -141,27 +141,27 @@ For more information, refer to the SDK documentation.
         ;}
     ,);
 ```
-        | Prop Name | Type | Description |
-        | --- | --- | --- |
-        | `props` | `BankAccountFormProps` | Props for the component |
-        | `ref` | `React.Ref<BankAccountFormView.Styles>`| Ref for the component |
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `props` | `BankAccountFormProps` | Props for the component |
+| `ref` | `React.Ref<BankAccountFormView.Styles>`| Ref for the component |
 
 The **`BankAccountForm`** component renders a **`BankAccountFormNative`** component, which is a native view that allows users to input their bank account information. The **`styleOverrides`** prop is used to apply custom style overrides to specific sub-components of the **`BankAccountFormNative`** component.
 
 #### Dependencies
-        The **`BankAccountForm.tsx`** file has the following dependencies:
+The **`BankAccountForm.tsx`** file has the following dependencies:
 
    * react-native
    * ../types
    * react
 
 ### Bank Account Form Functions
-    This module exports two functions for interacting with a native bank account form component: **validate()** and **tokenize()**. These functions are async and return promises.
+This module exports two functions for interacting with a native bank account form component: **validate()** and **tokenize()**. These functions are async and return promises.
 
     ### validate()
     The **validate()** function validates the bank account information entered by the user in the form.
 
-    ``` Typescript
+``` Typescript
         async function validate(): Promise<boolean> {
          Call the native validate() function and return the result as a boolean.
     return new Promise(resolve => {
@@ -170,7 +170,8 @@ The **`BankAccountForm`** component renders a **`BankAccountFormNative`** compon
                 });
             });
         }
-    ```
+```
+
 ### tokenize()
 The **tokenize()** function takes the validated bank account information and generates a token that can be used for processing payments.
 

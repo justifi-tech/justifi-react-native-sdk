@@ -149,7 +149,7 @@ For more information, refer to the SDK documentation.
 The **`BankAccountForm`** component renders a **`BankAccountFormNative`** component, which is a native view that allows users to input their bank account information. The **`styleOverrides`** prop is used to apply custom style overrides to specific sub-components of the **`BankAccountFormNative`** component.
 
 #### Dependencies
-    The **`BankAccountForm.tsx`** file has the following dependencies:
+        The **`BankAccountForm.tsx`** file has the following dependencies:
 
    * react-native
    * ../types

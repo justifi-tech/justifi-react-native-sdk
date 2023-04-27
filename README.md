@@ -50,10 +50,10 @@ Provide step-by-step instructions on how to install your SDK. Include any platfo
 **BankAccountFormProps**
 Defines the props for the BankAccountForm component:
 
-        | Prop Name | Type | Description |
-        | --- | --- | --- |
-        | `style` | `StyleProp<ViewStyle>` | Styles for the BankAccountForm component.|
-        | `styleOverrides` | `object` | Overrides for the default component styles.|
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `style` | `StyleProp<ViewStyle>` | Styles for the BankAccountForm component.|
+| `styleOverrides` | `object` | Overrides for the default component styles.|
 
 **BankAccountFormState**
 Defines the state for the BankAccountForm component.
@@ -68,11 +68,11 @@ The BankAccountForm component renders a form for entering bank account informati
 Defines the view for the BankAccountForm component:
 
     
-        | Prop Name | Type | Description |
-        | --- | --- | --- |
-        | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-        | `error` | `string|null` | An error message to display, if any.|
-        | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
+| `error` | `string|null` | An error message to display, if any.|
+| `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
 ## BankAccountForm.js
   This file exports a **`BankAccountForm`** component that renders a native **`BankAccountFormView`** component using the **`requireNativeComponent`** method from **`react-native`**.
@@ -119,10 +119,10 @@ For more information, refer to the SDK documentation.
             }
 ```
                         
-        | Prop Name | Type | Description |
-        | --- | --- | --- |
-        | `style` | `StyleProp<ViewStyle>` | Custom styles for the component |
-        | `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component |
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `style` | `StyleProp<ViewStyle>` | Custom styles for the component |
+| `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component |
 
 #### **`BankAccountForm`** Component
         The **`BankAccountForm`** component is defined as follows:
@@ -187,15 +187,16 @@ The **tokenize()** function takes the validated bank account information and gen
 ```
 To use these functions in your project, import them like this:
 
-    ``` Typescript 
+``` Typescript 
        import { validate, tokenize } from './path/to/bankAccountFormFunctions';
-    ```
+```
+
 Then, call the functions as needed:
 
-     ``` Typescript 
+``` Typescript 
         const isValid = await validate();
         const token = await tokenize();
-    ```
+```
     
 ## Bank Account Form Functions
 

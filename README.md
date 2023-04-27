@@ -158,8 +158,8 @@ The **`BankAccountForm.tsx`** file has the following dependencies:
 ### Bank Account Form Functions
 This module exports two functions for interacting with a native bank account form component: **validate()** and **tokenize()**. These functions are async and return promises.
 
-    ### validate()
-    The **validate()** function validates the bank account information entered by the user in the form.
+### validate()
+The **validate()** function validates the bank account information entered by the user in the form.
 
 ``` Typescript
         async function validate(): Promise<boolean> {

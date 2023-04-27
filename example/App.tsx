@@ -14,8 +14,9 @@ export default function App() {
 
 
   // const validateCuston = 'onSubmit';
-   // const handleValidateCard = async () => {
+  // const handleValidateCard = async () => {
   //   const isValid = await validateCard();
+  //   console.log('isValid', isValid);
   // };
 
   // const handleTokenizeCard = async () => {
@@ -24,6 +25,7 @@ export default function App() {
   //     'paymentMethodMetadata',
   //     CLIENT_SECRET,
   //   );
+  //  console.log('token', token);
   // };
 
   // const handleValidate = async () => {

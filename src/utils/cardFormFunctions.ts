@@ -2,14 +2,27 @@ import { NativeModules } from 'react-native';
 
 const { CardFormView } = NativeModules;
 
-export function validate(): boolean {
-  return CardFormView.validate();
+export async function validate(): Promise<boolean> {
+  return new Promise((resolve) => {
+    CardFormView.validate((isValid: boolean) => {
+      resolve(isValid);
+    });
+  });
 }
 
 export async function tokenize(
   clientId: string,
   paymentMethodMetadata: string,
   account: string,
-): Promise<any> {
-  return CardFormView.tokenize(clientId, paymentMethodMetadata, account);
+): Promise<string> {
+  return new Promise((resolve) => {
+    CardFormView.tokenize(
+      clientId,
+      paymentMethodMetadata,
+      account,
+      (token: string) => {
+        resolve(token);
+      },
+    );
+  });
 }

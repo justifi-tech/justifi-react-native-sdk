@@ -71,7 +71,7 @@ Defines the view for the BankAccountForm component:
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-| `error` | `string` |`null` | An error message to display, if any.|
+| `error` | `string | null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
 ## BankAccountForm.js
@@ -125,7 +125,7 @@ For more information, refer to the SDK documentation.
 | `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component |
 
 #### **`BankAccountForm`** Component
-        The **`BankAccountForm`** component is defined as follows:
+    The **`BankAccountForm`** component is defined as follows:
 
  ``` typescript
             const BankAccountForm = forwardRef<BankAccountFormView.Styles, BankAccountFormProps>(

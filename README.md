@@ -37,7 +37,7 @@ Provide step-by-step instructions on how to install your SDK. Include any platfo
 # Usage
 
 ## BankAccountForm.d.ts
-    Defines the TypeScript types for the BankAccountForm component and its props. TypeScript users can import these types to ensure type safety in their projects.
+  Defines the TypeScript types for the BankAccountForm component and its props. TypeScript users can import these types to ensure type safety in their projects.
 
 ``` Typescript
     import type { BankAccountFormProps } from './path/to/BankAccountForm.d.ts';
@@ -71,7 +71,7 @@ Defines the view for the BankAccountForm component:
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-| `error` | `string|null` | An error message to display, if any.|
+| `error` | `string` |`null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
 ## BankAccountForm.js

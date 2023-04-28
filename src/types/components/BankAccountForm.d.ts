@@ -12,6 +12,7 @@
  * }
  */
 
+import React from 'react';
 import { AccessibilityProps, StyleProp, ViewStyle } from 'react-native';
 
 /**

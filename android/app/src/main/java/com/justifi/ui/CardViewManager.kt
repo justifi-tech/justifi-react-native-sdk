@@ -47,11 +47,11 @@ class CardViewManager : SimpleViewManager<CardView>() {
   }
 
   /***
-   * The tokenize function receives the clientId, the paymentMethodMetadata and the account,
-   * and returns the payment method token.
+   * The tokenize function receives the clientId, the paymentMethodMetadata, the account, and the callback
+   * and returns the payment method token on the callback.
    */
   @ReactMethod
-  fun tokenize(clientId: String, paymentMethodMetadata: String, account: String) {
+  fun tokenize(clientId: String, paymentMethodMetadata: String, account: String, callback: com.facebook.react.bridge.Callback) {
     Log.d("tokenize clientId", clientId.toString())
     Log.d("tokenize account", account.toString())
     val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
@@ -62,18 +62,20 @@ class CardViewManager : SimpleViewManager<CardView>() {
       clientSecret = account)
     val call = serviceGenerator.oauth(data)
 
-    return call.enqueue(object : Callback<ClientModel> {
+    call.enqueue(object : Callback<ClientModel> {
 
       override fun onResponse(call: Call<ClientModel>, response: Response<ClientModel>) {
         if (response.isSuccessful) {
           val jsonObject = JSONObject(Gson().toJson(response.body()))
           val token = jsonObject.getString("access_token")
           Log.e("tokenize success", token.toString())
+          callback.invoke(token)
         }
       }
 
       override fun onFailure(call: Call<ClientModel>, t: Throwable) {
         Log.e("error", t.message.toString())
+        callback.invoke(null)
       }
     })
   }
@@ -82,19 +84,10 @@ class CardViewManager : SimpleViewManager<CardView>() {
    * The validate function verifies that the data is correct and returns the result in the isValid parameter.
    */
   @ReactMethod
-  fun validate(): Boolean {
+  fun validate(callback: com.facebook.react.bridge.Callback) {
     Log.d("validate", "")
     // TODO: validate
-    return false
-  }
-
-  /***
-   * The onLoad function initializes the data to start the payment operation.
-   */
-  @ReactMethod
-  fun onLoad() {
-    Log.d("onLoad", "")
-    // TODO: init data
+    callback.invoke(true)
   }
 
 }

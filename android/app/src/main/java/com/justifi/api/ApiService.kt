@@ -9,14 +9,4 @@ interface ApiService {
     @POST("/oauth/token")
     fun oauth(@Body data: TokenModel): Call<ClientModel>
 
-    @GET("/v1/payments")
-    fun listPayments(): Call<MutableList<PaymentModel>>
-
-    //@Headers( "Authorization: Bearer {access_token}" )
-    @POST("/v1/payments")
-    open fun createPayment(
-        @Header("Authorization") content_type: String?,
-        @Body req: NewPaymentModel
-    ): Call<MutableList<PaymentModel>>
-
 }

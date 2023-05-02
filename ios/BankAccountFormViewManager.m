@@ -6,4 +6,6 @@ RCT_EXPORT_VIEW_PROPERTY(formLabel, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(formControl, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(errorMessage, NSDictionary)
 RCT_EXPORT_VIEW_PROPERTY(layout, NSDictionary)
+RCT_EXTERN_METHOD(validateCardData:(nonnull NSNumber *)node resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(submitCardData:(nonnull NSNumber *)node resolver:(RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 @end

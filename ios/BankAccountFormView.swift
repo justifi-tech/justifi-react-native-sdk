@@ -9,9 +9,9 @@ extension NSLayoutConstraint {
 
 @objc(BankAccountFormView)
 class BankAccountFormView: UIView {
-    private let routingNumberField = FieldView()
-    private let accountNumberField = FieldView()
-    private let stackView = UIStackView()
+  fileprivate let routingNumberField = FieldView()
+  fileprivate let accountNumberField = FieldView()
+  fileprivate let stackView = UIStackView()
   
 
     @objc var formLabel: NSDictionary = [:] {

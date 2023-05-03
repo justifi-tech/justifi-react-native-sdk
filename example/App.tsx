@@ -20,12 +20,8 @@ export default function App() {
   // };
 
   // const handleTokenizeCard = async () => {
-  //   const token = await tokenizeCard(
-  //     CLIENT_ID,
-  //     'paymentMethodMetadata',
-  //     CLIENT_SECRET,
-  //   );
-  //  console.log('token', token);
+  //   const token = await tokenizeCard('paymentMethodMetadata');
+  //   console.log('token', token);
   // };
 
   // const handleValidate = async () => {

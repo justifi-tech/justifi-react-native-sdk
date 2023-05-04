@@ -15,7 +15,7 @@ class FormPackage : ReactPackage {
 
   override fun createViewManagers(reactContext: ReactApplicationContext): List<ViewManager<*, *>> {
     return listOf<ViewManager<*, *>>(
-      BankAccountManager(reactContext),
+      BankAccountManager(),
       CardViewManager()
     )
   }

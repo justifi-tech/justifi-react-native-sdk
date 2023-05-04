@@ -6,17 +6,16 @@ import android.text.InputType
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.facebook.react.uimanager.ThemedReactContext
 import com.justifi.R
+import com.facebook.react.uimanager.ThemedReactContext
 
-class BankAccount : LinearLayout {
-  private var callerContext: ThemedReactContext
+class BankAccount(context: ThemedReactContext) : LinearLayout(context) {
+  private var callerContext: ThemedReactContext = context
 
   private var styleOverrides: String = ""
   private var validationStrategy: String = ""
 
-  constructor(context: ThemedReactContext) : super(context) {
-    this.callerContext = context
+  init {
     init()
   }
 

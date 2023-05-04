@@ -7,9 +7,9 @@ import android.graphics.Typeface
 
 import android.util.Log
 import android.widget.LinearLayout
-import com.facebook.react.uimanager.ThemedReactContext
 import com.justifi.R
 import com.justifi.Utils
+import com.facebook.react.uimanager.ThemedReactContext
 import org.json.JSONObject
 
 class CardView(context: ThemedReactContext) : LinearLayout(context) {
@@ -87,6 +87,10 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     }
   }
 
+  /**
+   * This function receives a JSON string with the styles to be customized and applies them to the CardView.
+   * @param styleOverrides a JSON string with the styles
+   **/
   fun setStyleOverrides(styleOverrides: String) {
     try {
       val json = JSONObject(styleOverrides)
@@ -191,11 +195,15 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     rootLayout.layoutParams = layoutParams
   }
 
+  /**
+   * This function receives the validation strategy the styles to be customized to be applied to the CardView.
+   * @param validation a JSON string with the styles
+   **/
   fun setValidationStrategy(validation: String) {
     validationStrategy = validation
   }
 
-  fun validateFields() : Boolean {
+  private fun validateFields() : Boolean {
     val cardNumber : InputView = findViewById(R.id.cardNumber)
     val expirationMM : InputView = findViewById(R.id.mm)
     val expirationYY : InputView = findViewById(R.id.yy)

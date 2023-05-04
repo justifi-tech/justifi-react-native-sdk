@@ -4,6 +4,10 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/**
+ * ServiceGenerator will be in charge of instantiating a Retrofit object,
+ * applying the Singleton design pattern, this object will make the requests possible.
+ * */
 object ServiceGenerator {
 
     private const val URL = "https://api.justifi-staging.com"

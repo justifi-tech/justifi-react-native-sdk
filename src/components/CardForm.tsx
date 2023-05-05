@@ -101,17 +101,17 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   modal: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     margin: 0,
   },
   modalContent: {
     backgroundColor: '#FFFFFF',
     paddingTop: 12,
     paddingHorizontal: 12,
-    borderRadius: 4,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
     minHeight: 500,
     paddingBottom: 20,
-    margin: 12,
   },
   container: {
     flex: 1,

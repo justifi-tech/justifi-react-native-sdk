@@ -1,7 +1,7 @@
 import { InitJutifiParams } from '../types';
 import 'jest-extended';
 
-describe('MyInterface', () => {
+describe('JustifiProvider', () => {
   it('should have "clientId" and "account" fields as string', () => {
     const myObj: InitJutifiParams = {
       clientId: 'clientId value',

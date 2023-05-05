@@ -6,7 +6,9 @@ export async function initialise(
   clientId: string,
   account: string,
 ): Promise<void> {
-  return new Promise(() => {
-    ProviderModule.initialise(clientId, account, () => {});
+  return new Promise((resolve) => {
+    ProviderModule.initialise(clientId, account, () => {
+      resolve();
+    });
   });
 }

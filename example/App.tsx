@@ -1,5 +1,5 @@
 // import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
-// import {CardForm, validateCard, tokenizeCard} from 'justifi-react-native-sdk';
+// import {CardForm, validateCard, tokenizeCard, JustifiProvider} from 'justifi-react-native-sdk';
 import {useState} from 'react';
 import * as React from 'react';
 
@@ -20,12 +20,8 @@ export default function App() {
   // };
 
   // const handleTokenizeCard = async () => {
-  //   const token = await tokenizeCard(
-  //     CLIENT_ID,
-  //     'paymentMethodMetadata',
-  //     CLIENT_SECRET,
-  //   );
-  //  console.log('token', token);
+  //   const token = await tokenizeCard('paymentMethodMetadata');
+  //   console.log('token', token);
   // };
 
   // const handleValidate = async () => {
@@ -87,19 +83,21 @@ export default function App() {
     switch (view) {
       case 'bankAccount':
         return (
-          <View style={styles.box}>
-            <Text>Bank Account Form</Text>
-            {/* <BankAccountForm
-              style={{height: 200, width: '80%'}}
-              styleOverrides={styleOverrides}
-            /> */}
-            <View>
-              {/* <Button title="Tokenize" onPress={handleTokenize} />
-              <Button title="Validate" onPress={handleValidate} /> */}
-            </View>
+          // <JustifiProvider clientId={CLIENT_ID} account={CLIENT_SECRET}>
+            <View style={styles.box}>
+              <Text>Bank Account Form</Text>
+              {/* <BankAccountForm
+                style={{height: 200, width: '80%'}}
+                styleOverrides={styleOverrides}
+              /> */}
+              <View>
+                {/* <Button title="Tokenize" onPress={handleTokenize} />
+                <Button title="Validate" onPress={handleValidate} /> */}
+              </View>
 
-            <Button title="Back to Menu" onPress={() => setView('menu')} />
-          </View>
+              <Button title="Back to Menu" onPress={() => setView('menu')} />
+            </View>
+          // </JustifiProvider>
         );
       case 'card':
         return (

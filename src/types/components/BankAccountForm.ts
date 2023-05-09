@@ -1,3 +1,3 @@
-export interface Styles {
+export interface NativeProps {
   styleOverrides?: object;
 }

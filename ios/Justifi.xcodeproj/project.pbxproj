@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		44071EE52A052B5000A04B53 /* ProviderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44071EE42A052B5000A04B53 /* ProviderModule.swift */; };
+		44071EE72A052B7200A04B53 /* ProviderModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44071EE62A052B7200A04B53 /* ProviderModuleManager.m */; };
 		447414B429E11A23005FBCDA /* BankAccountFormViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447414B329E11A23005FBCDA /* BankAccountFormViewManager.swift */; };
 		4480890E29F89436003B1FA9 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4480890D29F89436003B1FA9 /* APIManager.swift */; };
 		449C214D29E0DE75007F9533 /* BankAccountFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449C214C29E0DE75007F9533 /* BankAccountFormView.swift */; };
@@ -47,6 +49,8 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Justifi/main.m; sourceTree = "<group>"; };
 		19F6CBCC0A4E27FBF8BF4A61 /* libPods-Justifi-JustifiTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Justifi-JustifiTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B4392A12AC88292D35C810B /* Pods-Justifi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Justifi.debug.xcconfig"; path = "Target Support Files/Pods-Justifi/Pods-Justifi.debug.xcconfig"; sourceTree = "<group>"; };
+		44071EE42A052B5000A04B53 /* ProviderModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderModule.swift; sourceTree = "<group>"; };
+		44071EE62A052B7200A04B53 /* ProviderModuleManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProviderModuleManager.m; sourceTree = "<group>"; };
 		447414B329E11A23005FBCDA /* BankAccountFormViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAccountFormViewManager.swift; sourceTree = "<group>"; };
 		4480890D29F89436003B1FA9 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		449C214B29E0DE74007F9533 /* Justifi-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Justifi-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -121,6 +125,8 @@
 				44D5024229EF7F820058EC27 /* BankAccountFormFunctions.swift */,
 				44D5024429EF7FB20058EC27 /* BankAccountFormFunctions.m */,
 				4480890D29F89436003B1FA9 /* APIManager.swift */,
+				44071EE42A052B5000A04B53 /* ProviderModule.swift */,
+				44071EE62A052B7200A04B53 /* ProviderModuleManager.m */,
 			);
 			name = Justifi;
 			sourceTree = "<group>";
@@ -449,6 +455,8 @@
 				44DEC69129EDFBCF00498416 /* FieldView.swift in Sources */,
 				447414B429E11A23005FBCDA /* BankAccountFormViewManager.swift in Sources */,
 				449C214F29E0DF6A007F9533 /* BankAccountFormViewManager.m in Sources */,
+				44071EE52A052B5000A04B53 /* ProviderModule.swift in Sources */,
+				44071EE72A052B7200A04B53 /* ProviderModuleManager.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				449C214D29E0DE75007F9533 /* BankAccountFormView.swift in Sources */,
 				44DEC69529EDFC1A00498416 /* FieldViewManager.m in Sources */,

@@ -9,8 +9,7 @@ export default function App() {
   const [view, setView] = useState('menu');
 
   // const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
-  // const CLIENT_SECRET =
-  //   'test_ZIRvzP5R4aWfeTq0vQjNgXmg1RL3r3fk-kM5jALXm8kRY_7XieYuWbbiN4grB-oX';
+  // const ACCOUNT = 'acc_3VgkWT3JXKdNPnh2S5NRp3';
 
   // const [openCard, setOpenCard] = useState(true);
 
@@ -104,10 +103,22 @@ export default function App() {
             {/* <CardForm
               style={styles.view}
               styleOverrides={JSON.stringify(styleOverrides)}
-              validationStrategy={'onSubmit'}
               open={openCard}
               onClose={() => {
                 console.log('close');
+              }}
+              onSubmitCard={({nativeEvent}) => {
+                console.log('NATIVE EVENT', nativeEvent);
+                const {statusCode, data, error} = nativeEvent;
+
+                if (statusCode === 201) {
+                  Alert.alert('Payment method created successfully');
+                  console.log('Payment method created successfully:', data);
+                } else {
+                  console.log('PARSED ERROR', error);
+                  Alert.alert('Error ' + statusCode, error ?? '');
+                  console.log(`Error with status code ${statusCode}: ${error ?? ''}`);
+                }
               }}
             /> */}
             <Button title="Back to Menu" onPress={() => setView('menu')} />
@@ -127,7 +138,7 @@ export default function App() {
   };
 
   return (
-    // <JustifiProvider clientId={CLIENT_ID} account={CLIENT_SECRET}>
+    // <JustifiProvider clientId={CLIENT_ID} account={ACCOUNT}>
       <View style={styles.container}>
         {renderContent()}
       </View>

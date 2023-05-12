@@ -5,4 +5,6 @@ export interface NativeProps {
   }) => void;
 }
 
-export interface BankAccountFormView extends NativeProps {}
+export namespace BankAccountFormView {
+  export interface Props extends NativeProps {}
+}

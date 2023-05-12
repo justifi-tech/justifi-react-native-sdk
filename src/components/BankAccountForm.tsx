@@ -12,7 +12,7 @@ import Modal from 'react-native-modal';
 import React from 'react';
 
 const BankAccountFormNative =
-  requireNativeComponent<BankAccountFormView.NativeProps>(
+  requireNativeComponent<BankAccountFormView.BankAccountFormViewProps>(
     'BankAccountFormView',
   );
 

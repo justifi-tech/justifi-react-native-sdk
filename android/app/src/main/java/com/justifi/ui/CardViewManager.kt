@@ -1,23 +1,28 @@
 package com.justifi.ui
 
+import com.facebook.react.bridge.ReactApplicationContext
+import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
 import com.facebook.react.uimanager.annotations.ReactProp
+
 
 /**
  * CardViewManager handles the instance of the CardView view and updates its properties.
  * All sensitive data and methods of the CardFormView component are encapsulated internally,
  * thus preventing unauthorized access or modification through refs.
  */
-class CardViewManager : SimpleViewManager<CardView>() {
+class CardViewManager(private val reactContext: ReactApplicationContext) : SimpleViewManager<CardView>() {
 
-  private lateinit var contextReact: ThemedReactContext
+  private var contextReact: ThemedReactContext? = null
+  private var cardView: CardView? = null
 
   override fun getName() = "CardFormView"
 
   override fun createViewInstance(context: ThemedReactContext): CardView {
     contextReact = context
-    return CardView(context)
+    cardView = CardView(context)
+    return cardView!!
   }
 
   /***
@@ -34,14 +39,13 @@ class CardViewManager : SimpleViewManager<CardView>() {
   }
 
   /***
-   * The validationStrategy prop defines when the validation of the CardFormView component is performed,
-   * its values can be as follows: "all" | "onBlur" | "onChange" | "onSubmit" | "onTouched"
-   * @param view view to which the prop is applied
-   * @param validationStrategy its values can be as follows: "all" | "onBlur" | "onChange" | "onSubmit" | "onTouched"
+   * The getExportedCustomDirectEventTypeConstants function returns a map with the custom events
    */
-  @ReactProp(name = "validationStrategy")
-  fun setValidationStrategy(view: CardView, validationStrategy: String?) {
-    view.setValidationStrategy(validationStrategy.toString())
+  override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any>? {
+    return MapBuilder.of(
+      "onSubmitCard",
+      MapBuilder.of("registrationName", "onSubmitCard")
+    )
   }
 
 }

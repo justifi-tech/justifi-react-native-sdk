@@ -1,5 +1,4 @@
 import {
-  Button,
   StatusBar,
   StyleProp,
   StyleSheet,
@@ -8,7 +7,6 @@ import {
   ViewStyle,
   requireNativeComponent,
 } from 'react-native';
-import { validate, tokenize } from '../utils/cardFormFunctions';
 import type { CardFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
@@ -19,9 +17,11 @@ import React from 'react';
 export interface Props extends CardFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: string;
-  validationStrategy?: string;
   open: boolean;
   onClose: () => void;
+  onSubmitCard?: (event: {
+    nativeEvent: { statusCode: number; data: any; error: any };
+  }) => void;
 }
 
 const CardFormNative = requireNativeComponent<Props>('CardFormView');
@@ -34,7 +34,6 @@ const CardFormNative = requireNativeComponent<Props>('CardFormView');
  *  <CardForm
  *    style={styles.view}
  *    styleOverrides={JSON.stringify(stylesCustom)}
- *    validationStrategy={'onSubmit'}
  *    open={handleOpen}
  *    onClose={handleClose}
  *  >
@@ -47,16 +46,6 @@ const CardFormNative = requireNativeComponent<Props>('CardFormView');
  */
 export const CardForm: React.FC<Props> = (props) => {
   const { open, onClose } = props;
-
-  const handleTokenize = async () => {
-    const token = await tokenize('paymentMethodMetadata');
-    console.log('token', token);
-  };
-
-  const handleValidate = async (): Promise<void> => {
-    const isValid = await validate();
-    console.log('isValid', isValid);
-  };
 
   return (
     <View style={styles.flexView}>
@@ -82,12 +71,6 @@ export const CardForm: React.FC<Props> = (props) => {
             <View style={styles.view}>
               <CardFormNative {...props} />
             </View>
-            <View style={styles.button}>
-              <Button title="Tokenize" onPress={handleTokenize} />
-            </View>
-            <View style={styles.button}>
-              <Button title="Validate" onPress={handleValidate} />
-            </View>
           </View>
         </View>
       </Modal>
@@ -110,7 +93,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
-    minHeight: 500,
+    minHeight: 480,
     paddingBottom: 20,
   },
   container: {
@@ -125,10 +108,5 @@ const styles = StyleSheet.create({
   view: {
     width: '100%',
     flex: 1,
-  },
-  button: {
-    width: '100%',
-    paddingHorizontal: 32,
-    paddingVertical: 8,
   },
 });

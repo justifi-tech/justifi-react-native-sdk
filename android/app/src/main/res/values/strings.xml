@@ -1,6 +1,7 @@
 <resources>
-  <string name="app_name">AwesomeProject4</string>
+  <string name="app_name">Justifi</string>
   <string name="preference_file_key">preferences</string>
+  <string name="error_alert">An error occurred while sending the data. Please try again</string>
 
   <!-- Card -->
   <string name="card_number">Card Number</string>

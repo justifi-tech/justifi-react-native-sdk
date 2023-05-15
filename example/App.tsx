@@ -3,7 +3,7 @@
 import {useState} from 'react';
 import * as React from 'react';
 
-import {StyleSheet, View, Button, Text} from 'react-native';
+import {StyleSheet, View, Button} from 'react-native';
 
 export default function App() {
   const [view, setView] = useState('menu');

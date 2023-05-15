@@ -23,6 +23,8 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BankAccountFormView = void 0;
-const BankAccountFormView = __importStar(require("./components/BankAccountForm"));
+exports.BankAccountFormView = exports.CardFormView = void 0;
+var CardFormView = require("./components/CardForm");
+exports.CardFormView = CardFormView;
+var BankAccountFormView = require("./components/BankAccountForm");
 exports.BankAccountFormView = BankAccountFormView;

@@ -2,8 +2,7 @@
  * Defines the types for the BankAccountForm component and its props.
  * TypeScript users can import these types to ensure type safety in their projects.
  *
- * Example usage:
- *
+ * @example
  * import type { BankAccountFormProps } from './path/to/BankAccountForm.d.ts';
  *
  * const MyComponent = () => {
@@ -51,8 +50,7 @@ export interface BankAccountFormState {
 /**
  * The BankAccountForm component renders a form for entering bank account information.
  * 
- * Example usage:
- *
+ * @example
  * <BankAccountForm {...props} />
  */
 export class BankAccountForm extends React.Component<BankAccountFormProps, BankAccountFormState> {}

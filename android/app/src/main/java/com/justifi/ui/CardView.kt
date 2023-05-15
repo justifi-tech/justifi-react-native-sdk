@@ -2,16 +2,29 @@
 
 package com.justifi.ui
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
 
 import android.util.Log
+import android.widget.Button
 import android.widget.LinearLayout
 import com.justifi.R
 import com.justifi.Utils
+import com.justifi.api.*
+import com.facebook.react.bridge.Arguments
+import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.ThemedReactContext
+import com.facebook.react.uimanager.events.RCTEventEmitter
 import org.json.JSONObject
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
+import android.util.Base64
 
+@Suppress("DEPRECATION")
 class CardView(context: ThemedReactContext) : LinearLayout(context) {
   private var callerContext: ThemedReactContext = context
 
@@ -19,7 +32,6 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
   private var formControl: JSONObject = JSONObject()
   private var formLabel: JSONObject = JSONObject()
   private var layout: JSONObject = JSONObject()
-  private var validationStrategy: String = ""
 
   private var formControlBackgroundColor = Color.WHITE
   private var formControlBorderColor = Color.GRAY
@@ -81,6 +93,13 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
       cvvNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
         formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
         formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
+
+      //Submit
+      val submitButton : Button = findViewById(R.id.submit_button)
+      submitButton.setOnClickListener() {
+        Log.d("CardView", "Submit button clicked")
+        onSubmit()
+      }
 
     } catch (ex: Exception) {
       Log.e("init", ex.toString())
@@ -195,12 +214,96 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     rootLayout.layoutParams = layoutParams
   }
 
-  /**
-   * This function receives the validation strategy the styles to be customized to be applied to the CardView.
-   * @param validation a JSON string with the styles
-   **/
-  fun setValidationStrategy(validation: String) {
-    validationStrategy = validation
+  private fun getPreferences(): SharedPreferences {
+    return callerContext.getSharedPreferences(
+      callerContext.getString(R.string.preference_file_key),
+      Context.MODE_PRIVATE
+    )
+  }
+
+  private fun onSubmit() {
+    try {
+      if (validateFields()) {
+        // load data from provider
+        val clientId = getPreferences().getString("clientId", "").toString()
+        val account = getPreferences().getString("account", "").toString()
+
+        val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
+        val card = buildCardModel()
+        val payMethod = PaymentMethodModel(card = card)
+        val payModel = NewPaymentModel(paymentMethod = payMethod)
+        val idempotencyKey = UUID.randomUUID().toString()
+
+        // auth header
+        val encodedClientId = Base64.encodeToString(clientId.toByteArray(Charsets.UTF_8), Base64.NO_WRAP)
+        val basicAuthHeader = "Basic $encodedClientId:"
+
+        val call = serviceGenerator.createPaymentMethod(
+          "application/json",
+          idempotencyKey,
+          basicAuthHeader,
+          account,
+          payModel)
+
+        call.enqueue(object : Callback<PaymentModel> {
+          override fun onResponse(call: Call<PaymentModel>, response: Response<PaymentModel>) {
+            Log.d("response", response.toString())
+            if (response.isSuccessful) {
+              val resPaymentModel = response.body()
+              buildSuccessResponse(response, resPaymentModel.toString())
+            } else {
+              val responseError = JSONObject(response.errorBody()!!.string())
+              val error = responseError.getJSONObject("error")
+              val msg = error.getString("message")
+              buildErrorResponse(Throwable(msg), response.code())
+            }
+          }
+
+          override fun onFailure(call: Call<PaymentModel>, t: Throwable) {
+            buildErrorResponse(t, 0)
+          }
+        })
+      }
+    } catch (e: Exception) {
+      Log.e("error", e.message.toString())
+      buildErrorResponse(Throwable(resources.getString(R.string.error_alert)), 0)
+    }
+  }
+
+  private fun buildCardModel(): CardModel {
+    val cardNumber: InputView = findViewById(R.id.cardNumber)
+    val expirationMM: InputView = findViewById(R.id.mm)
+    val expirationYY: InputView = findViewById(R.id.yy)
+    val cvvNumber: InputView = findViewById(R.id.cvv)
+
+    return CardModel(
+      name = "Test User",
+      number = cardNumber.text.toString().toLong(),
+      verification = cvvNumber.text.toString().toInt(),
+      month = expirationMM.text.toString().toInt(),
+      year = ("20" + expirationYY.text.toString()).toInt(),
+      address_postal_code = 55555,
+    )
+  }
+
+  private fun buildSuccessResponse(response: Response<PaymentModel>, tokenData: String) {
+    val args: WritableMap = Arguments.createMap()
+    args.putInt("statusCode", response.code())
+    args.putString("data", tokenData)
+    args.putString("error", null)
+    callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
+      id, "onSubmitCard", args
+    )
+  }
+
+  private fun buildErrorResponse(t: Throwable, code: Int) {
+    val args: WritableMap = Arguments.createMap()
+    args.putInt("statusCode", code)
+    args.putString("data", null)
+    args.putString("error", t.message.toString())
+    callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
+      id, "onSubmitCard", args
+    )
   }
 
   private fun validateFields() : Boolean {

@@ -61,4 +61,11 @@
       android:layout_marginBottom="32dp"
       android:maxLength="4"/>
 
+    <Button
+      android:id="@+id/submit_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Submit"
+      android:layout_marginBottom="32dp"/>
+
 </LinearLayout>

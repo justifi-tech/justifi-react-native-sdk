@@ -9,9 +9,9 @@ export default function App() {
   const [view, setView] = useState('menu');
 
   // const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
-  // const CLIENT_SECRET =
-  //   'test_ZIRvzP5R4aWfeTq0vQjNgXmg1RL3r3fk-kM5jALXm8kRY_7XieYuWbbiN4grB-oX';
+  // const ACCOUNT = 'acc_3VgkWT3JXKdNPnh2S5NRp3';
 
+  // const [openCard, setOpenCard] = useState(true);
 
   // const validateCuston = 'onSubmit';
   // const handleValidateCard = async () => {
@@ -61,7 +61,7 @@ export default function App() {
   //   color: '#212529', //working
   //   fontSize: 16, //TODO ask if this increments the input height
   //   fontWeight: '400', //working
-  //   lineHeight: 2, //TODO is this the input height?
+  //   lineHeight: 90, //TODO is this the input height?
   //   margin: 0,
   //   padding: {top: 8, bottom: 8, left: 14, right: 14},
   // };
@@ -108,18 +108,27 @@ export default function App() {
       case 'card':
         return (
           <View style={styles.box}>
-            <Text>Card Form</Text>
-              {/* <CardForm
-                style={{height: '100%', width: '100%'}}
-                styleOverrides={JSON.stringify(styleOverrides)}
-                validationStrategy={validateCustom}
-              />
-              <View style={styles.button}>
-                <Button title="Tokenize" onPress={handleTokenizeCard} />
-              </View>
-              <View style={styles.button}>
-                <Button title="Validate" onPress={handleValidateCard} />
-              </View> */}
+            {/* <CardForm
+              style={styles.view}
+              styleOverrides={JSON.stringify(styleOverrides)}
+              open={openCard}
+              onClose={() => {
+                console.log('close');
+              }}
+              onSubmitCard={({nativeEvent}) => {
+                console.log('NATIVE EVENT', nativeEvent);
+                const {statusCode, data, error} = nativeEvent;
+
+                if (statusCode === 201) {
+                  Alert.alert('Payment method created successfully');
+                  console.log('Payment method created successfully:', data);
+                } else {
+                  console.log('PARSED ERROR', error);
+                  Alert.alert('Error ' + statusCode, error ?? '');
+                  console.log(`Error with status code ${statusCode}: ${error ?? ''}`);
+                }
+              }}
+            /> */}
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );
@@ -136,7 +145,13 @@ export default function App() {
     }
   };
 
-  return <View style={styles.container}>{renderContent()}</View>;
+  return (
+    // <JustifiProvider clientId={CLIENT_ID} account={ACCOUNT}>
+      <View style={styles.container}>
+        {renderContent()}
+      </View>
+    // </JustifiProvider>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -150,5 +165,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  view: {
+    width: '100%',
+    flex: 1,
   },
 });

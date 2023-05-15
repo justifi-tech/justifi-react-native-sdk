@@ -8,9 +8,5 @@ export { CardForm } from './components/CardForm';
 export { JustifiProvider } from './components/JustifiProvider';
 
 export { validate, tokenize } from './utils/bankAccountFormFunctions';
-export {
-  validate as validateCard,
-  tokenize as tokenizeCard,
-} from './utils/cardFormFunctions';
 
 export * from './types/index';

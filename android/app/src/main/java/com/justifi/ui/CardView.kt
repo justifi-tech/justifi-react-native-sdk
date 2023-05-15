@@ -295,7 +295,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     args.putString("data", tokenData)
     args.putString("error", null)
     callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
-      id, "onSubmitCard", args
+      id, "onSubmit", args
     )
   }
 
@@ -305,7 +305,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     args.putString("data", null)
     args.putString("error", t.message.toString())
     callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
-      id, "onSubmitCard", args
+      id, "onSubmit", args
     )
   }
 

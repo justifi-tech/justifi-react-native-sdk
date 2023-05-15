@@ -49,8 +49,8 @@ class CardViewManager : SimpleViewManager<CardView>() {
    */
   override fun getExportedCustomDirectEventTypeConstants(): MutableMap<String, Any>? {
     return MapBuilder.of(
-      "onSubmitCard",
-      MapBuilder.of("registrationName", "onSubmitCard")
+      "onSubmit",
+      MapBuilder.of("registrationName", "onSubmit")
     )
   }
 

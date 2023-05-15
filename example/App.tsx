@@ -102,7 +102,7 @@ export default function App() {
           <View style={styles.box}>
             {/* <CardForm
               style={styles.view}
-              styleOverrides={JSON.stringify(styleOverrides)}
+              styleOverrides={styleOverrides}
               open={openCard}
               onClose={() => {
                 console.log('close');

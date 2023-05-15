@@ -5,6 +5,45 @@
   android:id="@+id/container_bank_account"
   android:orientation="vertical"
   android:padding="32dp"
+  android:minHeight="400dp"
+  android:minWidth="400dp"
   >
+
+  <com.justifi.ui.LabelView
+    android:id="@+id/routing_num_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/routing_number"
+    android:textSize="16sp"/>
+
+  <com.justifi.ui.InputView
+    android:id="@+id/routingNumber"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/routing_number_placeholder"
+    android:layout_marginBottom="32dp"
+    android:maxLength="9"/>
+
+  <com.justifi.ui.LabelView
+    android:id="@+id/account_number_title"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/account_number"
+    android:textSize="16sp"/>
+
+  <com.justifi.ui.InputView
+    android:id="@+id/accountNumber"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/account_number_placeholder"
+    android:layout_marginBottom="32dp"
+    android:maxLength="30"/>
+
+  <Button
+    android:id="@+id/submit_button_bank_account"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Submit"
+    android:layout_marginBottom="32dp"/>
 
 </LinearLayout>

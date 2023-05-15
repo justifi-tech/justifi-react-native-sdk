@@ -16,7 +16,7 @@ import React from 'react';
  */
 export interface Props extends CardFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
-  styleOverrides?: string;
+  styleOverrides?: object;
   open: boolean;
   onClose: () => void;
   onSubmitCard?: (event: {

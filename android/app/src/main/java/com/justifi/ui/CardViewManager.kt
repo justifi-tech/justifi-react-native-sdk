@@ -1,6 +1,8 @@
 package com.justifi.ui
 
-import com.facebook.react.bridge.ReactApplicationContext
+import android.util.Log
+import com.justifi.Utils
+import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.common.MapBuilder
 import com.facebook.react.uimanager.SimpleViewManager
 import com.facebook.react.uimanager.ThemedReactContext
@@ -12,17 +14,15 @@ import com.facebook.react.uimanager.annotations.ReactProp
  * All sensitive data and methods of the CardFormView component are encapsulated internally,
  * thus preventing unauthorized access or modification through refs.
  */
-class CardViewManager(private val reactContext: ReactApplicationContext) : SimpleViewManager<CardView>() {
+class CardViewManager : SimpleViewManager<CardView>() {
 
   private var contextReact: ThemedReactContext? = null
-  private var cardView: CardView? = null
 
   override fun getName() = "CardFormView"
 
   override fun createViewInstance(context: ThemedReactContext): CardView {
     contextReact = context
-    cardView = CardView(context)
-    return cardView!!
+    return CardView(context)
   }
 
   /***
@@ -31,11 +31,17 @@ class CardViewManager(private val reactContext: ReactApplicationContext) : Simpl
    * members for Theme can be found here:
    * https://github.com/justifi-tech/web-component-library/tree/main/stencil-library/src/components/payment-method-form/theme.ts
    * @param view view to which the style is applied
-   * @param styleOverrides a JSON string with the styles
+   * @param styleOverrides a JSON with the styles
    */
   @ReactProp(name = "styleOverrides")
-  fun setStyleOverrides(view: CardView, styleOverrides: String?) {
-    view.setStyleOverrides(styleOverrides.toString())
+  fun setStyleOverrides(view: CardView, styleOverrides: ReadableMap?) {
+    try {
+      Utils.convertMapToJson(styleOverrides)?.let {
+        view.setStyleOverrides(it)
+      }
+    } catch (e: Exception) {
+      Log.d("setStyleOverrides", e.toString())
+    }
   }
 
   /***

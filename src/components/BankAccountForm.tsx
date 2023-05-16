@@ -1,37 +1,47 @@
 import {
   requireNativeComponent,
+  StyleProp,
+  ViewStyle,
   StatusBar,
   View,
   StyleSheet,
   Platform,
 } from 'react-native';
-import type {
-  ViewStyle,
-  StyleProp,
-  AccessibilityProps,
-} from 'react-native/types';
 import type { BankAccountFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
 
-const BankAccountFormNative =
-  requireNativeComponent<BankAccountFormView.BankAccountFormViewProps>(
-    'BankAccountFormView',
-  );
-
-export interface Props extends AccessibilityProps {
+export interface Props extends BankAccountFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
   open: boolean;
   onClose: () => void;
-  onSubmitCard?: (event: {
+  onSubmit?: (event: {
     nativeEvent: { statusCode: number; data: any; error: any };
   }) => void;
 }
 
-export const BankAccountForm = (props: Props) => {
-  const { styleOverrides, open, onClose, ...rest } = props;
-  const isIOS = Platform.OS === 'ios';
+const BankAccountNative = requireNativeComponent<Props>('BankAccountFormView');
+
+/**
+ *  BankAccount Component
+ *
+ * @example
+ *
+ *  <BankAccount
+ *    style={styles.view}
+ *    styleOverrides={stylesCustom}
+ *    open={handleOpen}
+ *    onClose={handleClose}
+ *  />
+ *
+ * @param __namedParameters Props
+ * @returns JSX.Element
+ * @category ReactComponents
+ */
+
+export const BankAccount: React.FC<Props> = (props) => {
+  const { open, onClose } = props;
 
   return (
     <View style={styles.flexView}>
@@ -52,13 +62,14 @@ export const BankAccountForm = (props: Props) => {
         style={styles.modal}
       >
         <View style={styles.modalContent}>
-          <View style={styles.center}>
+          <View
+            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
+          >
             <View style={styles.barIcon} />
-            <BankAccountFormNative
-              {...rest}
-              styleOverrides={isIOS ? { ...styleOverrides } : styleOverrides}
-              ref={null}
-              onSubmitCard={props.onSubmitCard}
+
+            <BankAccountNative
+              {...props}
+              {...(Platform.OS === 'ios' ? props.styleOverrides : {})}
             />
           </View>
         </View>
@@ -87,7 +98,6 @@ const styles = StyleSheet.create({
   },
   center: {
     display: 'flex',
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -96,6 +106,6 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: '#bbb',
     borderRadius: 3,
-    marginBottom: 20,
+    marginBottom: 30,
   },
 });

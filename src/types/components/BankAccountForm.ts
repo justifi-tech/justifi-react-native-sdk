@@ -1,6 +1,9 @@
-export interface BankAccountFormViewProps {
+import type { StyleProp, ViewStyle } from 'react-native/types';
+
+export interface NativeProps {
+  style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
-  onSubmitCard?: (event: {
+  onSubmit?: (event: {
     nativeEvent: { statusCode: number; data: any; error: any };
   }) => void;
 }

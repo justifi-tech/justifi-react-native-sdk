@@ -24,11 +24,11 @@ export interface Props extends BankAccountFormView.NativeProps {
 const BankAccountNative = requireNativeComponent<Props>('BankAccountFormView');
 
 /**
- *  BankAccount Component
+ *  BankAccountForm Component
  *
  * @example
  *
- *  <BankAccount
+ *  <BankAccountForm
  *    style={styles.view}
  *    styleOverrides={stylesCustom}
  *    open={handleOpen}
@@ -41,7 +41,7 @@ const BankAccountNative = requireNativeComponent<Props>('BankAccountFormView');
  * @category ReactComponents
  */
 
-export const BankAccount: React.FC<Props> = (props) => {
+export const BankAccountForm: React.FC<Props> = (props) => {
   const { open, onClose } = props;
 
   return (

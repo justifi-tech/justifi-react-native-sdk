@@ -33,6 +33,7 @@ const BankAccountNative = requireNativeComponent<Props>('BankAccountFormView');
  *    styleOverrides={stylesCustom}
  *    open={handleOpen}
  *    onClose={handleClose}
+ *    onSubmit={handleSubmit}
  *  />
  *
  * @param __namedParameters Props

@@ -3,8 +3,13 @@ import UIKit
 @objc(FieldView)
 class FieldView: UIView, UITextFieldDelegate {
     private let fieldLabel = UILabel()
-    private let textField = UITextField()
+    let textField = UITextField()
     private let errorLabel = UILabel()
+  
+    @objc func setError(message: String?) {
+      errorLabel.text = message
+    }
+
 
     @objc var formLabel: NSDictionary = [:] {
         didSet {
@@ -175,7 +180,7 @@ class FieldView: UIView, UITextFieldDelegate {
 
         fieldLabel.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -10).isActive = true
 
-        errorLabel.text = "Invalid value"
+        errorLabel.text = ""
         errorLabel.textColor = .red
         errorLabel.font = UIFont.systemFont(ofSize: 10)
 

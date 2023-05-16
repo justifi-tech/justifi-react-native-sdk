@@ -1,22 +1,18 @@
 import {
+  AccessibilityProps,
   requireNativeComponent,
+  StyleProp,
+  ViewStyle,
   StatusBar,
   View,
   StyleSheet,
-  Button,
 } from 'react-native';
-import type {
-  ViewStyle,
-  StyleProp,
-  AccessibilityProps,
-} from 'react-native/types';
-import { validate, tokenize } from '../utils/bankAccountFormFunctions';
 import type { BankAccountFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
 
 const BankAccountFormNative =
-  requireNativeComponent<BankAccountFormView.NativeProps>(
+  requireNativeComponent<BankAccountFormView.BankAccountFormViewProps>(
     'BankAccountFormView',
   );
 
@@ -25,20 +21,13 @@ export interface Props extends AccessibilityProps {
   styleOverrides?: object;
   open: boolean;
   onClose: () => void;
+  onSubmitCard?: (event: {
+    nativeEvent: { statusCode: number; data: any; error: any };
+  }) => void;
 }
 
 export const BankAccountForm = (props: Props) => {
   const { styleOverrides, open, onClose, ...rest } = props;
-
-  const handleValidate = async () => {
-    const isValid = await validate();
-    console.log('Form is valid:', isValid);
-  };
-
-  const handleTokenize = async () => {
-    const tokenizedData = await tokenize();
-    console.log('Tokenized from RN:', tokenizedData);
-  };
 
   return (
     <View style={styles.flexView}>
@@ -61,11 +50,12 @@ export const BankAccountForm = (props: Props) => {
         <View style={styles.modalContent}>
           <View style={styles.center}>
             <View style={styles.barIcon} />
-            <BankAccountFormNative {...rest} {...styleOverrides} ref={null} />
-            <View>
-              <Button title="Tokenize" onPress={handleTokenize} />
-              <Button title="Validate" onPress={handleValidate} />
-            </View>
+            <BankAccountFormNative
+              {...rest}
+              {...styleOverrides}
+              ref={null}
+              onSubmitCard={props.onSubmitCard}
+            />
           </View>
         </View>
       </Modal>

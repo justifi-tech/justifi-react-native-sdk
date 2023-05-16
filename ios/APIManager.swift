@@ -36,15 +36,19 @@ class APIManager {
                 return
             }
 
-            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 && httpResponse.statusCode != 201 {
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("API error: HTTP response JSON \(jsonString)")
+                let userInfo: [String: Any] = [NSLocalizedDescriptionKey: "HTTP response status code \(httpResponse.statusCode)", "JSON": jsonString]
+                let error = NSError(domain: "APIManager", code: httpResponse.statusCode, userInfo: userInfo)
+                completion(.failure(error))
+            } else {
                 let error = NSError(domain: "APIManager", code: httpResponse.statusCode, userInfo: nil)
                 completion(.failure(error))
-                print("API error: HTTP response status code \(httpResponse.statusCode)")
-                if let jsonString = String(data: data, encoding: .utf8) {
-                    print("API error: HTTP response JSON \(jsonString)")
-                }
-                return
             }
+            print("API error: HTTP response status code \(httpResponse.statusCode)")
+            return
+        }
 
             do {
                 let json = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
@@ -66,30 +70,27 @@ class APIManager {
         apiRequest("POST", endpoint: "/oauth/token", body: body, completion: completion)
     }
   
-  static func authenticatedRequest(_ httpMethod: String, endpoint: String, body: [String: Any]? = nil, clientId: String, clientSecret: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
-      createAuthToken(clientId: clientId, clientSecret: clientSecret) { result in
-          switch result {
-          case .success(let authData):
-              guard let accessToken = authData["access_token"] as? String else {
-                  let error = NSError(domain: "APIManager", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid access token"])
-                  completion(.failure(error))
-                  print("API error: Invalid access token")
-                  return
-              }
-              var headers = [
-                  "Content-Type": "application/json",
-                  "Authorization": "Bearer \(accessToken)"
-              ]
-              if let body = body {
-                  headers["Content-Length"] = "\(body.count)"
-              }
-              apiRequest(httpMethod, endpoint: endpoint, body: body,  headers: headers, completion: completion)
-          case .failure(let error):
-              completion(.failure(error))
-              print("API error: \(error.localizedDescription)")
-          }
+  
+  static func createPaymentMethod(body: [String: Any], completion: @escaping (Result<[String: Any], Error>) -> Void) {
+      guard let clientId = UserDefaults.standard.string(forKey: "clientId") else {
+          return
       }
+      
+      let encodedClientId = Data(clientId.utf8).base64EncodedString()
+      let basicAuthHeader = "Basic \(encodedClientId):"
+      let idempotencyKey = UUID().uuidString
+      
+      let headers = [
+          "Authorization": basicAuthHeader,
+          "Idempotency-Key": idempotencyKey,
+          "Sub-Account": "acc_3VgkWT3JXKdNPnh2S5NRp3",
+      ]
+      
+      print("Headers: \(headers)")
+      
+      apiRequest("POST", endpoint: "/v1/js/payment_methods", body: body, headers: headers, completion: completion)
   }
+
 
 }
 

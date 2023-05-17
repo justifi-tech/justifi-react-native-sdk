@@ -1,22 +1,19 @@
 import {
-  StatusBar,
-  StyleProp,
-  StyleSheet,
-  Text,
-  View,
-  ViewStyle,
   requireNativeComponent,
+  StyleProp,
+  ViewStyle,
+  StatusBar,
+  View,
+  StyleSheet,
+  Platform,
 } from 'react-native';
 import type { CardFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
 
-/**
- *  CardForm Component Props
- */
 export interface Props extends CardFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
-  styleOverrides?: string;
+  styleOverrides?: object;
   open: boolean;
   onClose: () => void;
   onSubmitCard?: (event: {
@@ -33,17 +30,17 @@ const CardFormNative = requireNativeComponent<Props>('CardFormView');
  *
  *  <CardForm
  *    style={styles.view}
- *    styleOverrides={JSON.stringify(stylesCustom)}
+ *    styleOverrides={stylesCustom}
  *    open={handleOpen}
  *    onClose={handleClose}
- *  >
- *    <App />
- *  </CardForm>
+ *    onSubmit={handleSubmit}
+ *  />
  *
  * @param __namedParameters Props
  * @returns JSX.Element
  * @category ReactComponents
  */
+
 export const CardForm: React.FC<Props> = (props) => {
   const { open, onClose } = props;
 
@@ -66,11 +63,15 @@ export const CardForm: React.FC<Props> = (props) => {
         style={styles.modal}
       >
         <View style={styles.modalContent}>
-          <View style={styles.container}>
-            <Text style={styles.title}>Card Form</Text>
-            <View style={styles.view}>
-              <CardFormNative {...props} />
-            </View>
+          <View
+            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
+          >
+            <View style={styles.barIcon} />
+
+            <CardFormNative
+              {...props}
+              {...(Platform.OS === 'ios' ? props.styleOverrides : {})}
+            />
           </View>
         </View>
       </Modal>
@@ -96,17 +97,16 @@ const styles = StyleSheet.create({
     minHeight: 480,
     paddingBottom: 20,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
+  center: {
+    display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
   },
-  title: {
-    fontSize: 20,
-    fontWeight: '700',
-  },
-  view: {
-    width: '100%',
-    flex: 1,
+  barIcon: {
+    width: 60,
+    height: 5,
+    backgroundColor: '#bbb',
+    borderRadius: 3,
+    marginBottom: 30,
   },
 });

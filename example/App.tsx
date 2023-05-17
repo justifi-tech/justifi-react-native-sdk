@@ -11,29 +11,6 @@ export default function App() {
   // const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
   // const ACCOUNT = 'acc_3VgkWT3JXKdNPnh2S5NRp3';
 
-  // const [openCard, setOpenCard] = useState(true);
-
-  // const validateCuston = 'onSubmit';
-  // const handleValidateCard = async () => {
-  //   const isValid = await validateCard();
-  //   console.log('isValid', isValid);
-  // };
-
-  // const handleTokenizeCard = async () => {
-  //   const token = await tokenizeCard('paymentMethodMetadata');
-  //   console.log('token', token);
-  // };
-
-  // const handleValidate = async () => {
-  //   const isValid = await validate();
-  //   console.log('Form is valid:', isValid);
-  // };
-
-  // const handleTokenize = async () => {
-  //   const tokenizedData = await tokenize();
-  //   console.log('Tokenized data:', tokenizedData);
-  // };
-
   // const layout = {
   //   padding: 0, //working
   //   //TODO: ask about this ones to confirm with the Justifi team

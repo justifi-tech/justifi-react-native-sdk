@@ -6,6 +6,9 @@ class FieldView: UIView, UITextFieldDelegate {
     let textField = UITextField()
     private let errorLabel = UILabel()
   
+    // Sets the error message for the field.
+    // - Parameters:
+    //   - message: The error message to display.  
     @objc func setError(message: String?) {
       errorLabel.text = message
     }
@@ -51,14 +54,16 @@ class FieldView: UIView, UITextFieldDelegate {
         setupForm()
     }
   
+    // Updates the form label style based on the specified formLabel dictionary.
   private func updateFormLabel() {
       applyLabelStyle(to: fieldLabel)
   }
-
+    // Updates the form control style based on the specified formControl dictionary.
   private func updateFormControl() {
       applyTextFieldStyle(to: textField)
   }
 
+    // Updates the error message style based on the specified errorMessage dictionary.
   private func updateErrorMessage() {
       if let message = errorMessage["message"] as? String {
           errorLabel.text = message
@@ -67,7 +72,12 @@ class FieldView: UIView, UITextFieldDelegate {
           errorLabel.textColor = colorWithHexString(hexString: color)
       }
   }
-  
+
+    // Converts a hex color string to a UIColor.
+    // - Parameters:
+    //   - hexString: The hex color string to convert.
+    //   - alpha: The alpha value of the color.
+    // - Returns: The UIColor representation of the hex color string. 
   func colorWithHexString(hexString: String, alpha: CGFloat = 1.0) -> UIColor {
       var cString: String = hexString.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
       
@@ -90,6 +100,8 @@ class FieldView: UIView, UITextFieldDelegate {
       )
   }
   
+    // Applies the form label style to the specified label.
+    // - Parameter label: The label to apply the style to. 
   private func applyLabelStyle(to label: UILabel) {
     var font: UIFont = label.font
     
@@ -104,7 +116,9 @@ class FieldView: UIView, UITextFieldDelegate {
     label.font = font
 
   }
-  
+
+    // Applies the form control style to the specified text field.
+    // - Parameter textField: The text field to apply the style to. 
   private func applyTextFieldStyle(to textField: UITextField) {
       print("formControl:", formControl)
     
@@ -124,19 +138,24 @@ class FieldView: UIView, UITextFieldDelegate {
       let fontSize = formControl["fontSize"] as? CGFloat ?? 16.0
       textField.heightAnchor.constraint(equalToConstant: lineHeight * fontSize).isActive = true
   }
-  
+
+     // Handles the begin editing event of the text field. 
   func textFieldDidBeginEditing(_ textField: UITextField) {
       if let borderColorFocus = formControl["borderColorFocus"] as? String {
           textField.layer.borderColor = colorWithHexString(hexString: borderColorFocus).cgColor
       }
   }
 
+    // Handles the end editing event of the text field.
   func textFieldDidEndEditing(_ textField: UITextField) {
       if let borderColor = formControl["borderColor"] as? String {
           textField.layer.borderColor = colorWithHexString(hexString: borderColor).cgColor
       }
   }
-  
+
+    // Converts the font weight string to a UIFont.Weight value.
+    // - Parameter string: The font weight string.
+    // - Returns: The corresponding UIFont.Weight value.  
   private func fontweight(from string: String) -> UIFont.Weight {
       switch string {
       case "100":
@@ -162,7 +181,7 @@ class FieldView: UIView, UITextFieldDelegate {
       }
   }
 
-
+    // Sets up the field view with the necessary components and constraints.
     private func setupForm() {
         applyLabelStyle(to: fieldLabel)
 

@@ -3,6 +3,14 @@ import Foundation
 class APIManager {
     static let baseURLString = "https://api.justifi-staging.com"
 
+
+    // Sends an API request with the specified parameters and completion handler.
+    // - Parameters:
+    //   - httpMethod: The HTTP method to use for the request (e.g., "GET", "POST", etc.).
+    //   - endpoint: The endpoint of the API.
+    //   - body: Optional body parameters for the request.
+    //   - headers: Optional headers for the request.
+    //   - completion: The completion handler to be called with the API response or error.
   static func apiRequest(_ httpMethod: String, endpoint: String, body: [String: Any]? = nil, headers: [String: String]? = nil, completion: @escaping (Result<[String: Any], Error>) -> Void) {
       let urlString = "\(baseURLString)\(endpoint)"
       let url = URL(string: urlString)!
@@ -61,6 +69,11 @@ class APIManager {
         task.resume()
     }
 
+    // Creates an authentication token using the specified client ID and client secret.
+    // - Parameters:
+    //   - clientId: The client ID for authentication.
+    //   - clientSecret: The client secret for authentication.
+    //   - completion: The completion handler to be called with the authentication response or error.
     static func createAuthToken(clientId: String, clientSecret: String, completion: @escaping (Result<[String: Any], Error>) -> Void) {
         let body = [
             "grant_type": "client_credentials",
@@ -70,7 +83,10 @@ class APIManager {
         apiRequest("POST", endpoint: "/oauth/token", body: body, completion: completion)
     }
   
-  
+    // Creates a payment method with the specified parameters.
+    // - Parameters:
+    //   - body: The body parameters for creating the payment method.
+    //   - completion: The completion handler to be called with the payment method creation response or error.
   static func createPaymentMethod(body: [String: Any], completion: @escaping (Result<[String: Any], Error>) -> Void) {
       guard let clientId = UserDefaults.standard.string(forKey: "clientId") else {
           return

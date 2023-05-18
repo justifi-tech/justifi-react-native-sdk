@@ -17,9 +17,6 @@ class ProviderModule: NSObject, RCTBridgeModule {
     preferences.set(account, forKey: "account")
     preferences.synchronize()
 
-    print("ClientId: \(clientId)")
-    print("Account: \(account)")
-
     callback([])
   }
 }

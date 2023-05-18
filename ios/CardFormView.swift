@@ -20,13 +20,22 @@ class CardFormView: UIView {
     let yearPattern = "^\\d{2}$"
     let verificationPattern = "^[0-9]{3,4}$"
 
-  
+    // Matches a regular expression pattern in the given text.
+    // - Parameters:
+    //   - pattern: The regular expression pattern to match.
+    //   - text: The text to search for matches.
+    // - Returns: `true` if a match is found, `false` otherwise.
   func matches(_ pattern: String, in text: String) -> Bool {
       guard let regex = try? NSRegularExpression(pattern: pattern, options: []) else { return false }
       let range = NSRange(location: 0, length: text.utf16.count)
       return regex.firstMatch(in: text, options: [], range: range) != nil
   }
 
+    // Sends an event with the specified status code, data, and error message to the `onSubmit` event handler.
+    // - Parameters:
+    //   - statusCode: The status code to include in the event.
+    //   - data: The data to include in the event.
+    //   - errorMessage: The error message to include in the event.
   @objc private func sendEvent(statusCode: Int, data: [String: Any]?, errorMessage: String?) {
       onSubmit?([
           "statusCode": statusCode,
@@ -35,6 +44,7 @@ class CardFormView: UIView {
       ])
   }
   
+    // Handles the tap event of the submit button.
   @objc private func submitButtonTapped() {
       print("Triggers submit button tapped")
 
@@ -162,6 +172,7 @@ class CardFormView: UIView {
       setupForm()
   }
   
+    // Handles the tap event of the submit button.
   private func setupForm() {
       cardNumberField.textField.addTarget(self, action: #selector(cardNumberFieldChanged), for: .editingChanged)
       verificationField.textField.addTarget(self, action: #selector(verificationFieldChanged), for: .editingChanged)
@@ -206,24 +217,26 @@ class CardFormView: UIView {
       submitButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
   }
 
-
+    // Handles the change event of the card number field.
   @objc private func cardNumberFieldChanged(_ textField: UITextField) {
       cardNumber = textField.text ?? ""
   }
-
+    // Handles the change event of the verification field.
   @objc private func verificationFieldChanged(_ textField: UITextField) {
       verification = textField.text ?? ""
   }
 
+    // Handles the change event of the month field.
   @objc private func monthFieldChanged(_ textField: UITextField) {
       month = textField.text ?? ""
   }
 
+    // Handles the change event of the year field.
   @objc private func yearFieldChanged(_ textField: UITextField) {
       year = textField.text ?? ""
   }
 
-
+    // Updates the layout of the form view based on the specified layout properties.
   private func updateLayout() {
   if let padding = layout["padding"] as? CGFloat {
     stackView.layoutMargins = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)

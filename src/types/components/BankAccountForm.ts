@@ -1,9 +1,9 @@
-import type { StyleProp, ViewStyle } from 'react-native';
+import type { StyleProp, ViewStyle } from 'react-native/types';
 
 export interface NativeProps {
   style?: StyleProp<ViewStyle>;
-  styleOverrides?: string;
-  onSubmitCard?: (event: {
+  styleOverrides?: object;
+  onSubmit?: (event: {
     nativeEvent: { statusCode: number; data: any; error: any };
   }) => void;
 }

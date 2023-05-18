@@ -16,7 +16,7 @@ export interface Props extends CardFormView.NativeProps {
   styleOverrides?: object;
   open: boolean;
   onClose: () => void;
-  onSubmitCard?: (event: {
+  onSubmit?: (event: {
     nativeEvent: { statusCode: number; data: any; error: any };
   }) => void;
 }

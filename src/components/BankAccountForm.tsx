@@ -1,44 +1,48 @@
 import {
   requireNativeComponent,
+  StyleProp,
+  ViewStyle,
   StatusBar,
   View,
   StyleSheet,
-  Button,
+  Platform,
 } from 'react-native';
-import type {
-  ViewStyle,
-  StyleProp,
-  AccessibilityProps,
-} from 'react-native/types';
-import { validate, tokenize } from '../utils/bankAccountFormFunctions';
 import type { BankAccountFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
 
-const BankAccountFormNative =
-  requireNativeComponent<BankAccountFormView.NativeProps>(
-    'BankAccountFormView',
-  );
-
-export interface Props extends AccessibilityProps {
+export interface Props extends BankAccountFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
   open: boolean;
   onClose: () => void;
+  onSubmit?: (event: {
+    nativeEvent: { statusCode: number; data: any; error: any };
+  }) => void;
 }
 
-export const BankAccountForm = (props: Props) => {
-  const { styleOverrides, open, onClose, ...rest } = props;
+const BankAccountNative = requireNativeComponent<Props>('BankAccountFormView');
 
-  const handleValidate = async () => {
-    const isValid = await validate();
-    console.log('Form is valid:', isValid);
-  };
+/**
+ *  BankAccountForm Component
+ *
+ * @example
+ *
+ *  <BankAccountForm
+ *    style={styles.view}
+ *    styleOverrides={stylesCustom}
+ *    open={handleOpen}
+ *    onClose={handleClose}
+ *    onSubmit={handleSubmit}
+ *  />
+ *
+ * @param __namedParameters Props
+ * @returns JSX.Element
+ * @category ReactComponents
+ */
 
-  const handleTokenize = async () => {
-    const tokenizedData = await tokenize();
-    console.log('Tokenized from RN:', tokenizedData);
-  };
+export const BankAccountForm: React.FC<Props> = (props) => {
+  const { open, onClose } = props;
 
   return (
     <View style={styles.flexView}>
@@ -59,13 +63,15 @@ export const BankAccountForm = (props: Props) => {
         style={styles.modal}
       >
         <View style={styles.modalContent}>
-          <View style={styles.center}>
+          <View
+            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
+          >
             <View style={styles.barIcon} />
-            <BankAccountFormNative {...rest} {...styleOverrides} ref={null} />
-            <View>
-              <Button title="Tokenize" onPress={handleTokenize} />
-              <Button title="Validate" onPress={handleValidate} />
-            </View>
+
+            <BankAccountNative
+              {...props}
+              {...(Platform.OS === 'ios' ? props.styleOverrides : {})}
+            />
           </View>
         </View>
       </Modal>
@@ -101,12 +107,6 @@ const styles = StyleSheet.create({
     height: 5,
     backgroundColor: '#bbb',
     borderRadius: 3,
-    marginBottom: 20,
-  },
-  btnContainer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: 500,
+    marginBottom: 30,
   },
 });

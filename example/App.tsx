@@ -62,10 +62,28 @@ export default function App() {
         return (
             <View style={styles.box}>
               <Text>Bank Account Form</Text>
-              {/* <BankAccountForm
-                style={{height: 200, width: '80%'}}
+              {/* {<BankAccount
+                style={styles.view}
                 styleOverrides={styleOverrides}
-              /> */}
+                open={openCard}
+                onClose={() => {
+                  // console.log('onClose', inputRef);
+                  // setOpenCard(false);
+                }}
+                onSubmit={({nativeEvent}) => {
+                  console.log('NATIVE EVENT', nativeEvent);
+                  const {statusCode, data, error} = nativeEvent;
+
+                  if (statusCode === 201) {
+                    Alert.alert('Payment method created successfully');
+                    console.log('Payment method created successfully:', data);
+                  } else {
+                    console.log('PARSED ERROR', error);
+                    Alert.alert('Error ' + statusCode, error ?? '');
+                    console.log(`Error with status code ${statusCode}: ${error ?? ''}`);
+                  }
+                }}
+              />} */}
               <View>
                 {/* <Button title="Tokenize" onPress={handleTokenize} />
                 <Button title="Validate" onPress={handleValidate} /> */}
@@ -79,12 +97,12 @@ export default function App() {
           <View style={styles.box}>
             {/* <CardForm
               style={styles.view}
-              styleOverrides={JSON.stringify(styleOverrides)}
+              styleOverrides={styleOverrides}
               open={openCard}
               onClose={() => {
                 console.log('close');
               }}
-              onSubmitCard={({nativeEvent}) => {
+              onSubmit={({nativeEvent}) => {
                 console.log('NATIVE EVENT', nativeEvent);
                 const {statusCode, data, error} = nativeEvent;
 

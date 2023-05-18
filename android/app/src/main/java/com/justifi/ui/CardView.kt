@@ -107,20 +107,19 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
   }
 
   /**
-   * This function receives a JSON string with the styles to be customized and applies them to the CardView.
-   * @param styleOverrides a JSON string with the styles
+   * This function receives a JSON with the styles to be customized and applies them to the CardView.
+   * @param style a JSON string with the styles
    **/
-  fun setStyleOverrides(styleOverrides: String) {
+  fun setStyleOverrides(style: JSONObject) {
     try {
-      val json = JSONObject(styleOverrides)
-      if (json.has("layout"))
-        layout = json.getJSONObject("layout")
-      if (json.has("formLabel"))
-        formLabel =  json.getJSONObject("formLabel")
-      if (json.has("formControl"))
-        formControl = json.getJSONObject("formControl")
-      if (json.has("errorMessage"))
-        errorMessage = json.getJSONObject("errorMessage")
+      if (style.has("layout"))
+        layout = style.getJSONObject("layout")
+      if (style.has("formLabel"))
+        formLabel =  style.getJSONObject("formLabel")
+      if (style.has("formControl"))
+        formControl = style.getJSONObject("formControl")
+      if (style.has("errorMessage"))
+        errorMessage = style.getJSONObject("errorMessage")
 
       parseValues()
       init()
@@ -149,8 +148,12 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
       val borderColorFocus = formControl.getString("borderColorFocus")
       formControlBorderColorFocus = Color.parseColor(borderColorFocus)
     }
-    formControlMargin = formControl.getInt("margin")
-    formControlPadding = formControl.getJSONObject("padding")
+    if (formControl.has("margin")) {
+      formControlMargin = formControl.getInt("margin")
+    }
+    if (formControl.has("padding")) {
+      formControlPadding = formControl.getJSONObject("padding")
+    }
     if (formControl.has("color")) {
       val color = formControl.getString("color")
       formControlColor= Color.parseColor(color)
@@ -230,7 +233,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
 
         val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
         val card = buildCardModel()
-        val payMethod = PaymentMethodModel(card = card)
+        val payMethod = PaymentMethodModel(card = card, bankAccount = null)
         val payModel = NewPaymentModel(paymentMethod = payMethod)
         val idempotencyKey = UUID.randomUUID().toString()
 
@@ -277,7 +280,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     val cvvNumber: InputView = findViewById(R.id.cvv)
 
     return CardModel(
-      name = "Test User",
+      name = "John Doe",
       number = cardNumber.text.toString().toLong(),
       verification = cvvNumber.text.toString().toInt(),
       month = expirationMM.text.toString().toInt(),
@@ -292,7 +295,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     args.putString("data", tokenData)
     args.putString("error", null)
     callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
-      id, "onSubmitCard", args
+      id, "onSubmit", args
     )
   }
 
@@ -302,7 +305,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     args.putString("data", null)
     args.putString("error", t.message.toString())
     callerContext.getJSModule(RCTEventEmitter::class.java).receiveEvent(
-      id, "onSubmitCard", args
+      id, "onSubmit", args
     )
   }
 

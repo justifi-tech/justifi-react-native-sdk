@@ -225,7 +225,7 @@ Defines the view for the BankAccountForm component:
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-| `error` | `string | null` | An error message to display, if any.|
+| `error` | `string - null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
 ## BankAccountForm.js
@@ -396,7 +396,7 @@ Defines the view for the CardForm component:
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data. |
-| `error` | `string | null` |An error message to display, if any. |
+| `error` | `string - null` |An error message to display, if any. |
 | `success` | `boolean` |A boolean value indicating whether the form was successfully submitted. |
 
 ## CardForm.js

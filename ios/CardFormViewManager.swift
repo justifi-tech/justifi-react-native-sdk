@@ -1,15 +1,17 @@
 import UIKit
 import React
 
-@objc(BankAccountFormViewManager)
-class BankAccountFormViewManager: RCTViewManager {
+@objc(CardFormViewManager)
+class CardFormViewManager: RCTViewManager {
   override func view() -> UIView! {
     print("BankAccountFormViewManager initialized", #file, #function, #line)
 
-    return BankAccountFormView()
+    return CardFormView()
   }
   override class func requiresMainQueueSetup() -> Bool {
       return false
   }
+  
+
 }
 

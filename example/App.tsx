@@ -1,5 +1,5 @@
 // import {BankAccountForm, validate, tokenize} from 'justifi-react-native-sdk';
-// import {CardForm} from 'justifi-react-native-sdk';
+// import {CardForm, validateCard, tokenizeCard, JustifiProvider} from 'justifi-react-native-sdk';
 import {useState} from 'react';
 import * as React from 'react';
 
@@ -8,15 +8,8 @@ import {StyleSheet, View, Button, Text} from 'react-native';
 export default function App() {
   const [view, setView] = useState('menu');
 
-  // const handleValidate = async () => {
-  //   const isValid = await validate();
-  //   console.log('Form is valid:', isValid);
-  // };
-
-  // const handleTokenize = async () => {
-  //   const tokenizedData = await tokenize();
-  //   console.log('Tokenized data:', tokenizedData);
-  // };
+  // const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
+  // const ACCOUNT = 'acc_3VgkWT3JXKdNPnh2S5NRp3';
 
   // const layout = {
   //   padding: 0, //working
@@ -45,7 +38,7 @@ export default function App() {
   //   color: '#212529', //working
   //   fontSize: 16, //TODO ask if this increments the input height
   //   fontWeight: '400', //working
-  //   lineHeight: 2, //TODO is this the input height?
+  //   lineHeight: 90, //TODO is this the input height?
   //   margin: 0,
   //   padding: {top: 8, bottom: 8, left: 14, right: 14},
   // };
@@ -67,31 +60,62 @@ export default function App() {
     switch (view) {
       case 'bankAccount':
         return (
-          <View style={styles.box}>
-            <Text>Bank Account Form</Text>
-            {/* <BankAccountForm
-              style={{height: 200, width: '80%'}}
-              styleOverrides={styleOverrides}
-            /> */}
-            <View>
-              {/* <Button title="Tokenize" onPress={handleTokenize} />
-              <Button title="Validate" onPress={handleValidate} /> */}
-            </View>
+            <View style={styles.box}>
+              <Text>Bank Account Form</Text>
+              {/* {<BankAccount
+                style={styles.view}
+                styleOverrides={styleOverrides}
+                open={openCard}
+                onClose={() => {
+                  // console.log('onClose', inputRef);
+                  // setOpenCard(false);
+                }}
+                onSubmit={({nativeEvent}) => {
+                  console.log('NATIVE EVENT', nativeEvent);
+                  const {statusCode, data, error} = nativeEvent;
 
-            <Button title="Back to Menu" onPress={() => setView('menu')} />
-          </View>
+                  if (statusCode === 201) {
+                    Alert.alert('Payment method created successfully');
+                    console.log('Payment method created successfully:', data);
+                  } else {
+                    console.log('PARSED ERROR', error);
+                    Alert.alert('Error ' + statusCode, error ?? '');
+                    console.log(`Error with status code ${statusCode}: ${error ?? ''}`);
+                  }
+                }}
+              />} */}
+              <View>
+                {/* <Button title="Tokenize" onPress={handleTokenize} />
+                <Button title="Validate" onPress={handleValidate} /> */}
+              </View>
+
+              <Button title="Back to Menu" onPress={() => setView('menu')} />
+            </View>
         );
       case 'card':
         return (
           <View style={styles.box}>
-            <Text>Card Form</Text>
-            {
-              // <CardForm
-              //   style={{height: '100%', width: '100%'}}
-              //   styleOverrides={JSON.stringify(styleOverrides)}
-              //   validationStrategy={validateCustom}
-              // />
-            }
+            {/* <CardForm
+              style={styles.view}
+              styleOverrides={styleOverrides}
+              open={openCard}
+              onClose={() => {
+                console.log('close');
+              }}
+              onSubmit={({nativeEvent}) => {
+                console.log('NATIVE EVENT', nativeEvent);
+                const {statusCode, data, error} = nativeEvent;
+
+                if (statusCode === 201) {
+                  Alert.alert('Payment method created successfully');
+                  console.log('Payment method created successfully:', data);
+                } else {
+                  console.log('PARSED ERROR', error);
+                  Alert.alert('Error ' + statusCode, error ?? '');
+                  console.log(`Error with status code ${statusCode}: ${error ?? ''}`);
+                }
+              }}
+            /> */}
             <Button title="Back to Menu" onPress={() => setView('menu')} />
           </View>
         );
@@ -108,7 +132,13 @@ export default function App() {
     }
   };
 
-  return <View style={styles.container}>{renderContent()}</View>;
+  return (
+    // <JustifiProvider clientId={CLIENT_ID} account={ACCOUNT}>
+      <View style={styles.container}>
+        {renderContent()}
+      </View>
+    // </JustifiProvider>
+    );
 }
 
 const styles = StyleSheet.create({
@@ -122,5 +152,9 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  view: {
+    width: '100%',
+    flex: 1,
   },
 });

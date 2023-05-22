@@ -154,7 +154,11 @@ dependencies {
     implementation("com.facebook.react:react-android")
 
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
-  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.6.0")
+
+    // retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
     debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {

@@ -1,16 +1,10 @@
-/**
- * Defines the Styles interface for the BankAccountForm component.
- */
+import type { StyleProp, ViewStyle } from 'react-native/types';
 
-export namespace BankAccountFormView {
-  export interface Token {
-    // Token properties
-  }
-}
-export interface Styles {
-  /**
-   * Overrides for the default component styles.
-   */
+export interface NativeProps {
+  style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
+  onSubmit?: (event: {
+    nativeEvent: { statusCode: number; data: any; error: any };
+  }) => void;
 }
 

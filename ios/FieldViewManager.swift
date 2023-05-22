@@ -7,7 +7,7 @@ class FieldViewManager: RCTViewManager {
     }
   
     override class func requiresMainQueueSetup() -> Bool {
-    return false
+      return false
     }
 
     @objc func setFormLabel(_ node: NSNumber, formLabel: NSDictionary) {

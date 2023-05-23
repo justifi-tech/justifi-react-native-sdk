@@ -33,7 +33,7 @@ export default function App() {
     borderWidth: 4,
     borderRadius: { topLeft: 4, topRight: 4, bottomLeft: 4, bottomRight: 4 },
     color: '#212529',
-    // fontSize: 55, // uniform platform font size
+    fontSize: 16,
     fontWeight: '400',
     lineHeight: 90,
     margin: 12,

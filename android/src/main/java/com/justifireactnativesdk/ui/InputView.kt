@@ -67,8 +67,7 @@ class InputView : AppCompatEditText {
     setPadding(left, top, right, bottom)
 
     val displayMetrics = resources.displayMetrics
-    val spSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, fontSize.toFloat(), displayMetrics) / displayMetrics.scaledDensity
-    setTextSize(TypedValue.COMPLEX_UNIT_SP, spSize)
+    setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize.toFloat())
     setTypeface(null, fontWeight)
 
     val gd = Utils.getDrawable(borderRadius, borderWidth, borderColor, backgroundColor)

@@ -1,7 +1,7 @@
 import { UIManager, Platform } from 'react-native';
 import { BankAccountForm } from './components/BankAccountForm';
 import { CardForm } from './components/CardForm';
-// import { JustifiProvider } from './components/JustifiProvider';
+import { JustifiProvider as JustifiProviderNative } from './components/JustifiProvider';
 
 const LINKING_ERROR =
   `The package 'justifi-react-native-sdk' doesn't seem to be linked. Make sure: \n\n` +
@@ -23,10 +23,4 @@ export const CardFormView =
         throw new Error(LINKING_ERROR);
       };
 
-// export const JustifiProviderView =
-//   UIManager.getViewManagerConfig('ProviderModule') != null
-//     ? JustifiProvider
-//     : () => {
-//         throw new Error(LINKING_ERROR);
-//       };
-// export const JustifiProviderView = JustifiProvider;
+export const JustifiProvider = JustifiProviderNative;

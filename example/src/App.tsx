@@ -4,13 +4,15 @@ import { Alert, Button, StyleSheet, View } from 'react-native';
 import {
   BankAccountFormView,
   CardFormView,
-  // JustifiProviderView,
+  JustifiProvider,
 } from 'justifi-react-native-sdk';
 
 export default function App() {
   const [view, setView] = React.useState('menu');
   const [openCard, setOpenCard] = React.useState(true);
   const [openBank, setOpenBank] = React.useState(true);
+
+  // Test credentials
   const CLIENT_ID = 'test_Sbxw9RJ8PplOrC5ezUHcU5X9vJ3Q4Fmx';
   const ACCOUNT = 'acc_3VgkWT3JXKdNPnh2S5NRp3';
 
@@ -56,36 +58,35 @@ export default function App() {
       case 'bankAccount':
         return (
           <View style={styles.box}>
-            <BankAccountFormView
-              style={styles.view}
-              styleOverrides={styleOverrides}
-              open={openBank}
-              onClose={() => {
-                setOpenBank(false);
-                setView('menu');
-              }}
-              onSubmit={({ nativeEvent }) => {
-                console.log('NATIVE EVENT', nativeEvent);
-                const { statusCode, data, error } = nativeEvent;
+              <BankAccountFormView
+                style={styles.view}
+                styleOverrides={styleOverrides}
+                open={openBank}
+                onClose={() => {
+                  setOpenBank(false);
+                  setView('menu');
+                }}
+                onSubmit={({ nativeEvent }) => {
+                  console.log('NATIVE EVENT', nativeEvent);
+                  const { statusCode, data, error } = nativeEvent;
 
-                if (statusCode === 201) {
-                  Alert.alert('Payment method created successfully');
-                  console.log('Payment method created successfully:', data);
-                } else {
-                  console.log('PARSED ERROR', error);
-                  Alert.alert('Error ' + statusCode, error ?? '');
-                  console.log(
-                    `Error with status code ${statusCode}: ${error ?? ''}`
-                  );
-                }
-              }}
-            />
+                  if (statusCode === 201) {
+                    Alert.alert('Payment method created successfully');
+                    console.log('Payment method created successfully:', data);
+                  } else {
+                    console.log('PARSED ERROR', error);
+                    Alert.alert('Error ' + statusCode, error ?? '');
+                    console.log(
+                      `Error with status code ${statusCode}: ${error ?? ''}`
+                    );
+                  }
+                }}
+              />
           </View>
         );
       case 'card':
         return (
           <View style={styles.box}>
-            {/* <JustifiProviderView clientId={CLIENT_ID} account={ACCOUNT}> */}
             <CardFormView
               style={styles.view}
               styleOverrides={styleOverrides}
@@ -110,7 +111,6 @@ export default function App() {
                 }
               }}
             />
-            {/* </JustifiProviderView> */}
           </View>
         );
       default:
@@ -127,9 +127,9 @@ export default function App() {
   };
 
   return (
-    // <JustifiProviderView clientId={CLIENT_ID} account={ACCOUNT}>
-    <View style={styles.container}>{renderContent()}</View>
-    // </JustifiProviderView>
+    <JustifiProvider clientId={CLIENT_ID} account={ACCOUNT}>
+      <View style={styles.container}>{renderContent()}</View>
+    </JustifiProvider>
   );
 }
 

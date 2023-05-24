@@ -45,7 +45,7 @@ export const BankAccountForm: React.FC<Props> = (props) => {
   const { open, onClose } = props;
 
   return (
-    <View style={styles.flexView}>
+    <View style={styles.flexView} testID="bank-account-form">
       <StatusBar />
 
       <Modal

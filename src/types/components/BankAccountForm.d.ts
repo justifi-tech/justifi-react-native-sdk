@@ -12,6 +12,7 @@
  */
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
+interface MyInterface {}
 
 import React from 'react';
 import { AccessibilityProps, StyleProp, ViewStyle } from 'react-native';

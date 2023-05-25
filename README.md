@@ -94,45 +94,16 @@ These dependencies are required for the Justifi-react-Native SDK to function pro
 To use the Justifi-react-Native SDK in your React Native application, follow these steps:
 
 1. Import the SDK module into your JavaScript file:
-``` Typescript
-  import { JustifiSDK } from 'justifi-react-native-sdk';
+```js
+import { JustifiReactNativeSdkView } from "justifi-react-native-sdk";
 ```
 
-2. Initialize the SDK:
+2. Perform actions using and customizing the SDK:
 ``` Typescript
-  const sdk = new JustifiSDK();
+<JustifiReactNativeSdkView color="tomato" />
 ```
 
-3. Perform actions using the SDK:
-``` Typescript
-sdk.doSomething();
-```
-
-4. Handle callbacks or promises for asynchronous operations:
-``` Typescript
-  sdk.performAsyncAction()
-  .then((result) => {
-    // Handle the successful result
-    console.log(result);
-  })
-  .catch((error) => {
-    // Handle the error
-    console.error(error);
-  });
-```
-
-5. Customize the SDK's behavior or UI:
-``` Typescript
-  // Set a custom theme
-sdk.setTheme('dark');
-
-// Set a custom button color
-sdk.setButtonColor('#ff0000');
-
-```
-
-6. Explore the available methods and functionalities provided by the SDK by referring to the Documentation.
-
+3. Explore the available methods and functionalities provided by the SDK by referring to the Documentation.
 
 # Examples
 
@@ -526,6 +497,10 @@ Then, call the functions as needed:
   const isValid = await validate();
   const token = await tokenize();
 ```
+
+## Contributing
+
+See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
 
 ## License
 

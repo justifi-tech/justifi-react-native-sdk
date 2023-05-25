@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Justifi</string>
+  <string name="preference_file_key">preferences</string>
+  <string name="error_alert">An error occurred while sending the data. Please try again</string>
+
+  <!-- Card -->
+  <string name="card_number">Card Number</string>
+  <string name="card_number_hint">1234123412341234</string>
+  <string name="expiration">Expiration</string>
+  <string name="expiration_mm">MM</string>
+  <string name="expiration_yy">YY</string>
+  <string name="cvv">CVV</string>
+  <string name="error_msg">Please enter a valid number</string>
+
+  <!-- Bank Account -->
+  <string name="routing_number">Routing Number</string>
+  <string name="routing_number_placeholder">Enter routing number</string>
+  <string name="account_number">Account Number</string>
+  <string name="account_number_placeholder">Enter account number</string>
+</resources>

@@ -1,11 +1,26 @@
-// dummy function for testing
-export function multiply(a: number, b: number): Promise<number> {
-  return Promise.resolve(a * b);
-}
+import { UIManager, Platform } from 'react-native';
+import { BankAccountForm } from './components/BankAccountForm';
+import { CardForm } from './components/CardForm';
+import { JustifiProvider as JustifiProviderNative } from './components/JustifiProvider';
 
-export { BankAccountForm } from './types/components/BankAccountForm';
-export { CardForm } from './types/components/CardForm';
+const LINKING_ERROR =
+  `The package 'justifi-react-native-sdk' doesn't seem to be linked. Make sure: \n\n` +
+  Platform.select({ ios: "- You have run 'pod install'\n", default: '' }) +
+  '- You rebuilt the app after installing the package\n' +
+  '- You are not using Expo Go\n';
+  
+export const BankAccountFormView =
+  UIManager.getViewManagerConfig('BankAccountFormView') != null
+    ? BankAccountForm
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
 
-export { validate, tokenize } from './utils/bankAccountFormFunctions';
+export const CardFormView =
+  UIManager.getViewManagerConfig('CardFormView') != null
+    ? CardForm
+    : () => {
+        throw new Error(LINKING_ERROR);
+      };
 
-export * from './types/index';
+export const JustifiProvider = JustifiProviderNative;

@@ -13,8 +13,11 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
+<<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 		7699B88040F8A987B510C191 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a */; };
 =======
+=======
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 		44071EE52A052B5000A04B53 /* ProviderModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44071EE42A052B5000A04B53 /* ProviderModule.swift */; };
 		44071EE72A052B7200A04B53 /* ProviderModuleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44071EE62A052B7200A04B53 /* ProviderModuleManager.m */; };
 		447414B429E11A23005FBCDA /* BankAccountFormViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447414B329E11A23005FBCDA /* BankAccountFormViewManager.swift */; };
@@ -153,6 +156,9 @@
 				44D2FCAF2A12F67C0011591E /* CardFormView.swift */,
 				44D2FCB12A12F6AA0011591E /* CardFormViewManager.m */,
 				44D2FCB32A12F6DD0011591E /* CardFormViewManager.swift */,
+<<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 			);
 			name = JustifiReactNativeSdkExample;
@@ -476,8 +482,11 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
+<<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 =======
+=======
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 				4480890E29F89436003B1FA9 /* APIManager.swift in Sources */,
 				44DEC69129EDFBCF00498416 /* FieldView.swift in Sources */,
 				447414B429E11A23005FBCDA /* BankAccountFormViewManager.swift in Sources */,
@@ -490,6 +499,9 @@
 				449C214D29E0DE75007F9533 /* BankAccountFormView.swift in Sources */,
 				44DEC69529EDFC1A00498416 /* FieldViewManager.m in Sources */,
 				44D2FCB22A12F6AA0011591E /* CardFormViewManager.m in Sources */,
+<<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 			);
 			runOnlyForDeploymentPostprocessing = 0;

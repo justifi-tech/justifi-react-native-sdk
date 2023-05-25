@@ -1,28 +1,16 @@
-@file:Suppress("NAME_SHADOWING")
-
-<<<<<<<< HEAD:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
-package com.justifireactnativesdk.ui
-========
 package com.justifi.ui
->>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:android/app/src/main/java/com/justifi/ui/CardView.kt
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
-
+import android.util.Base64
 import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
-<<<<<<<< HEAD:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
-import com.justifireactnativesdk.R
-import com.justifireactnativesdk.Utils
-import com.justifireactnativesdk.api.*
-========
 import com.justifi.R
 import com.justifi.Utils
 import com.justifi.api.*
->>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:android/app/src/main/java/com/justifi/ui/CardView.kt
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.ThemedReactContext
@@ -32,10 +20,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
-import android.util.Base64
 
 @Suppress("DEPRECATION")
-class CardView(context: ThemedReactContext) : LinearLayout(context) {
+class BankAccount(context: ThemedReactContext) : LinearLayout(context) {
   private var callerContext: ThemedReactContext = context
 
   private var errorMessage: JSONObject = JSONObject()
@@ -62,62 +49,66 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
   private var formLabelFontFamily =  "sans-serif"
   private var formLabelMargin = JSONObject()
 
-
   init {
     init()
   }
 
   private fun init() {
     try {
-      inflate(callerContext, R.layout.card_view, this)
+      inflate(callerContext, R.layout.bank_account, this)
       customLayout()
 
-      // Card number
-      val cardNumberTitle : LabelView = findViewById(R.id.card_num_title)
-      cardNumberTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
+      // Routing
+      val routingTitle : LabelView = findViewById(R.id.routing_num_title)
+      routingTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
 
-      val cardNumber : InputView = findViewById(R.id.cardNumber)
-      cardNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+      val routingNumber : InputView = findViewById(R.id.routingNumber)
+      routingNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
         formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
         formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
-      // Expiration
-      val expirationTitle : LabelView = findViewById(R.id.expiration_title)
-      expirationTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
+      // Account
+      val accountTitle : LabelView = findViewById(R.id.account_number_title)
+      accountTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
 
-      val expirationMM : InputView = findViewById(R.id.mm)
-      expirationMM.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
-        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
-        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
-
-      val expirationYY : InputView = findViewById(R.id.yy)
-      expirationYY.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
-        formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
-        formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
-
-      // CVV
-      val cvvTitle : LabelView = findViewById(R.id.cvv_title)
-      cvvTitle.setup(formLabelFontFamily, formLabelWeight, formLabelMargin)
-
-      val cvvNumber : InputView = findViewById(R.id.cvv)
-      cvvNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
+      val accountNumber : InputView = findViewById(R.id.accountNumber)
+      accountNumber.setup(formControlBackgroundColor, formControlColor, formControlMargin, formControlPadding,
         formControlLineHeight, formControlFontSize, formControlFontWeight, formControlBorderRadius,
         formControlBorderWidth, formControlBorderColor, formControlBackgroundColorHover)
 
       //Submit
-      val submitButton : Button = findViewById(R.id.submit_button)
+      val submitButton : Button = findViewById(R.id.submit_button_bank_account)
       submitButton.setOnClickListener() {
-        Log.d("CardView", "Submit button clicked")
         onSubmit()
       }
-
     } catch (ex: Exception) {
       Log.e("init", ex.toString())
     }
   }
 
+  private fun customLayout() {
+    val rootLayout : LinearLayout = findViewById(R.id.container_bank_account)
+
+    if(layout.has("padding")) {
+      val layoutPadding = layout.getInt("padding")
+      rootLayout.setPadding(layoutPadding,layoutPadding,layoutPadding,layoutPadding)
+    }
+
+    var formControlSpacingVertical = 0
+    var formControlSpacingHorizontal = 0
+    if(layout.has("formControlSpacingHorizontal"))
+      formControlSpacingHorizontal = layout.getInt("formControlSpacingHorizontal")
+    if(layout.has("formControlSpacingVertical"))
+      formControlSpacingVertical = layout.getInt("formControlSpacingVertical")
+
+    val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
+    layoutParams.setMargins(formControlSpacingHorizontal/2, formControlSpacingVertical/2,
+      formControlSpacingHorizontal/2, formControlSpacingVertical/2)
+    rootLayout.layoutParams = layoutParams
+  }
+
   /**
-   * This function receives a JSON with the styles to be customized and applies them to the CardView.
+   * This function receives a JSON with the styles to be customized and applies them to the BankAccount.
    * @param style a JSON string with the styles
    **/
   fun setStyleOverrides(style: JSONObject) {
@@ -206,27 +197,6 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     }
   }
 
-  private fun customLayout() {
-    val rootLayout: LinearLayout = findViewById(R.id.container_layout)
-
-    if(layout.has("padding")) {
-      val layoutPadding = layout.getInt("padding")
-      rootLayout.setPadding(layoutPadding,layoutPadding,layoutPadding,layoutPadding)
-    }
-
-    var formControlSpacingVertical = 0
-    var formControlSpacingHorizontal = 0
-    if(layout.has("formControlSpacingHorizontal"))
-      formControlSpacingHorizontal = layout.getInt("formControlSpacingHorizontal")
-    if(layout.has("formControlSpacingVertical"))
-      formControlSpacingVertical = layout.getInt("formControlSpacingVertical")
-
-    val layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
-    layoutParams.setMargins(formControlSpacingHorizontal/2, formControlSpacingVertical/2,
-      formControlSpacingHorizontal/2, formControlSpacingVertical/2)
-    rootLayout.layoutParams = layoutParams
-  }
-
   private fun getPreferences(): SharedPreferences {
     return callerContext.getSharedPreferences(
       callerContext.getString(R.string.preference_file_key),
@@ -242,8 +212,8 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
         val account = getPreferences().getString("account", "").toString()
 
         val serviceGenerator = ServiceGenerator.buildService(ApiService::class.java)
-        val card = buildCardModel()
-        val payMethod = PaymentMethodModel(card = card, bankAccount = null)
+        val bankAccount = buildModel()
+        val payMethod = PaymentMethodModel(bankAccount = bankAccount, card = null)
         val payModel = NewPaymentModel(paymentMethod = payMethod)
         val idempotencyKey = UUID.randomUUID().toString()
 
@@ -283,19 +253,18 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
     }
   }
 
-  private fun buildCardModel(): CardModel {
-    val cardNumber: InputView = findViewById(R.id.cardNumber)
-    val expirationMM: InputView = findViewById(R.id.mm)
-    val expirationYY: InputView = findViewById(R.id.yy)
-    val cvvNumber: InputView = findViewById(R.id.cvv)
+  private fun buildModel(): BankAccountModel {
+    val routingNumber : InputView = findViewById(R.id.routingNumber)
+    val accountNumber : InputView = findViewById(R.id.accountNumber)
 
-    return CardModel(
-      name = "John Doe",
-      number = cardNumber.text.toString().toLong(),
-      verification = cvvNumber.text.toString().toInt(),
-      month = expirationMM.text.toString().toInt(),
-      year = ("20" + expirationYY.text.toString()).toInt(),
-      address_postal_code = 55555,
+    return BankAccountModel(
+      accountOwnerName = "John Doe",
+      routingNumber = routingNumber.text.toString().toLong(),
+      accountNumber = accountNumber.text.toString(),
+      accountType = "checking",
+      accountOwnerType = "individual",
+      country = "US",
+      currency = "usd"
     )
   }
 
@@ -320,33 +289,20 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
   }
 
   private fun validateFields() : Boolean {
-    val cardNumber : InputView = findViewById(R.id.cardNumber)
-    val expirationMM : InputView = findViewById(R.id.mm)
-    val expirationYY : InputView = findViewById(R.id.yy)
-    val cvvNumber : InputView = findViewById(R.id.cvv)
+    val routingNumber : InputView = findViewById(R.id.routingNumber)
+    val accountNumber : InputView = findViewById(R.id.accountNumber)
     val errorTitle = resources.getString(R.string.error_msg)
 
-    if (!Utils.validCard(cardNumber.text.toString())) {
-      cardNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
-      cardNumber.requestFocus()
+    if (!Utils.validRoutingNumber(routingNumber.text.toString())) {
+      routingNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
+      routingNumber.requestFocus()
       return false
     }
-    if (!Utils.validMM(expirationMM.text.toString())) {
-      expirationMM.error = Utils.buildError(formControlErrorColor, errorTitle)
-      expirationMM.requestFocus()
-      return false
-    }
-    if (!Utils.validYY(expirationYY.text.toString())) {
-      expirationYY.error = Utils.buildError(formControlErrorColor, errorTitle)
-      expirationYY.requestFocus()
-      return false
-    }
-    if (!Utils.validCVV(cvvNumber.text.toString())) {
-      cvvNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
-      cvvNumber.requestFocus()
+    if (!Utils.validAccountNumber(accountNumber.text.toString())) {
+      accountNumber.error = Utils.buildError(formControlErrorColor, errorTitle)
+      accountNumber.requestFocus()
       return false
     }
     return true
   }
-
 }

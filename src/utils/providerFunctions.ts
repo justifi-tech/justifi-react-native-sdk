@@ -4,7 +4,7 @@ const { ProviderModule } = NativeModules;
 
 export async function initialise(
   clientId: string,
-  account: string
+  account: string,
 ): Promise<void> {
   return new Promise((resolve) => {
     ProviderModule.initialise(clientId, account, () => {

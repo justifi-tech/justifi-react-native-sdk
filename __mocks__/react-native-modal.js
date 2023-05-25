@@ -1,10 +1,14 @@
 // File: __mocks__/react-native-modal.js
 
 import React from 'react';
+import { View } from 'react-native';
 
-const MockModal = () => {
-  // Your mock implementation
-  return <></>;
+const MockModal = ({ open, children }) => {
+  if (!open) {
+    return null;
+  }
+
+  return <View>{children}</View>;
 };
 
 export default MockModal;

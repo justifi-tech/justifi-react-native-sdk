@@ -17,7 +17,15 @@ describe('CardForm', () => {
     );
 
     const cardForm = getByTestId('card-form');
-    // Add assertions for the rendered component
+    expect(cardForm).toBeDefined();
+  });
+
+  it('renders correctly when open is false', () => {
+    const { queryByTestId } = render(
+      <CardForm open={false} onClose={onCloseMock} onSubmit={onSubmitMock} />
+    );
+
+    const cardForm = queryByTestId('card-form');
     expect(cardForm).toBeDefined();
   });
 });

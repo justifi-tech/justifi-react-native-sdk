@@ -45,7 +45,7 @@ class CardView(context: ThemedReactContext) : LinearLayout(context) {
   private var formControlMargin = 8
   private var formControlBorderWidth = 2
   private var formControlLineHeight = 80
-  private var formControlFontSize = 50
+  private var formControlFontSize = 16
   private var formControlFontWeight = Typeface.NORMAL
 
   private var formLabelWeight = Typeface.NORMAL

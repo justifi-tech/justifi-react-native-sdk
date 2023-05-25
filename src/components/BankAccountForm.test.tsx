@@ -21,7 +21,19 @@ describe('BankAccountForm', () => {
     );
 
     const bankAccountForm = getByTestId('bank-account-form');
-    // Add assertions for the rendered component
+    expect(bankAccountForm).toBeDefined();
+  });
+
+  it('renders correctly when open is false', () => {
+    const { getByTestId } = render(
+      <BankAccountForm
+        open={false}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
+      />
+    );
+
+    const bankAccountForm = getByTestId('bank-account-form');
     expect(bankAccountForm).toBeDefined();
   });
 });

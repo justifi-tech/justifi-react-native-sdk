@@ -61,7 +61,7 @@ export const CardForm: React.FC<Props> = (props) => {
         backdropTransitionInTiming={1000}
         backdropTransitionOutTiming={500}
         style={styles.modal}
-        accessibilityLabel="card-modal"
+        accessibilityLabel="modal-backdrop"
       >
         <View style={styles.modalContent}>
           <View

@@ -45,7 +45,7 @@ export const CardForm: React.FC<Props> = (props) => {
   const { open, onClose } = props;
 
   return (
-    <View style={styles.flexView}>
+    <View style={styles.flexView} testID="card-form">
       <StatusBar />
 
       <Modal
@@ -61,6 +61,7 @@ export const CardForm: React.FC<Props> = (props) => {
         backdropTransitionInTiming={1000}
         backdropTransitionOutTiming={500}
         style={styles.modal}
+        accessibilityLabel="modal-backdrop"
       >
         <View style={styles.modalContent}>
           <View

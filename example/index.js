@@ -1,11 +1,5 @@
-// @ts-nocheck
+import { AppRegistry } from 'react-native';
+import App from './src/App';
+import { name as appName } from './app.json';
 
-/**
- * @format
- */
-
-import {AppRegistry} from 'react-native';
-import App from './App';
-
-// eslint-disable-next-line no-undef
 AppRegistry.registerComponent(appName, () => App);

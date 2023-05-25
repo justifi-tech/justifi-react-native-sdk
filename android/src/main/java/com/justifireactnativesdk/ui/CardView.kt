@@ -1,10 +1,24 @@
 @file:Suppress("NAME_SHADOWING")
 
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:android/app/src/main/java/com/justifi/ui/CardView.kt
+<<<<<<< HEAD
+>>>>>>> main
 <<<<<<<< HEAD:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
 package com.justifireactnativesdk.ui
 ========
 package com.justifi.ui
 >>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:android/app/src/main/java/com/justifi/ui/CardView.kt
+<<<<<<< HEAD
+=======
+=======
+package com.justifi.ui
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d
+========
+package com.justifireactnativesdk.ui
+>>>>>>>> main:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
+>>>>>>> main
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -14,6 +28,11 @@ import android.graphics.Typeface
 import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:android/app/src/main/java/com/justifi/ui/CardView.kt
+<<<<<<< HEAD
+>>>>>>> main
 <<<<<<<< HEAD:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
 import com.justifireactnativesdk.R
 import com.justifireactnativesdk.Utils
@@ -23,6 +42,19 @@ import com.justifi.R
 import com.justifi.Utils
 import com.justifi.api.*
 >>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:android/app/src/main/java/com/justifi/ui/CardView.kt
+<<<<<<< HEAD
+=======
+=======
+import com.justifi.R
+import com.justifi.Utils
+import com.justifi.api.*
+>>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d
+========
+import com.justifireactnativesdk.R
+import com.justifireactnativesdk.Utils
+import com.justifireactnativesdk.api.*
+>>>>>>>> main:android/src/main/java/com/justifireactnativesdk/ui/CardView.kt
+>>>>>>> main
 import com.facebook.react.bridge.Arguments
 import com.facebook.react.bridge.WritableMap
 import com.facebook.react.uimanager.ThemedReactContext

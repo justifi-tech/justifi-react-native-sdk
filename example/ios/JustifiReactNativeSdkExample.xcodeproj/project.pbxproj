@@ -12,6 +12,7 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+<<<<<<< HEAD
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 		7699B88040F8A987B510C191 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a */; };
@@ -32,6 +33,9 @@
 		44DEC69529EDFC1A00498416 /* FieldViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44DEC69429EDFC1A00498416 /* FieldViewManager.m */; };
 		7699B88040F8A987B510C191 /* libPods-Justifi-JustifiTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-Justifi-JustifiTests.a */; };
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
+		7699B88040F8A987B510C191 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.a */; };
+>>>>>>> main
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +52,10 @@
 /* Begin PBXFileReference section */
 		00E356EE1AD99517003FC87E /* JustifiReactNativeSdkExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JustifiReactNativeSdkExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+<<<<<<< HEAD
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
+=======
+>>>>>>> main
 		00E356F21AD99517003FC87E /* JustifiReactNativeSdkExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustifiReactNativeSdkExampleTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* JustifiReactNativeSdkExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JustifiReactNativeSdkExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = JustifiReactNativeSdkExample/AppDelegate.h; sourceTree = "<group>"; };
@@ -63,6 +70,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-JustifiReactNativeSdkExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JustifiReactNativeSdkExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = JustifiReactNativeSdkExample/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.release.xcconfig"; path = "Target Support Files/Pods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests/Pods-JustifiReactNativeSdkExample-JustifiReactNativeSdkExampleTests.release.xcconfig"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 =======
 		00E356F21AD99517003FC87E /* JustifiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JustifiTests.m; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Justifi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Justifi.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +100,8 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Justifi/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-Justifi-JustifiTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Justifi-JustifiTests.release.xcconfig"; path = "Target Support Files/Pods-Justifi-JustifiTests/Pods-Justifi-JustifiTests.release.xcconfig"; sourceTree = "<group>"; };
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
+>>>>>>> main
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -141,6 +151,7 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+<<<<<<< HEAD
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 =======
 				449C214C29E0DE75007F9533 /* BankAccountFormView.swift */,
@@ -160,6 +171,8 @@
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 =======
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
+>>>>>>> main
 			);
 			name = JustifiReactNativeSdkExample;
 			sourceTree = "<group>";
@@ -481,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+<<<<<<< HEAD
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 <<<<<<< HEAD:example/ios/JustifiReactNativeSdkExample.xcodeproj/project.pbxproj
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
@@ -503,6 +517,9 @@
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
 =======
 >>>>>>> 78ef2d7be542039118b1b97b00156fe4ee2b8c3d:ios/Justifi.xcodeproj/project.pbxproj
+=======
+				13B07FC11A68108700A75B9A /* main.m in Sources */,
+>>>>>>> main
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

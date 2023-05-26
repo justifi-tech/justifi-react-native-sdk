@@ -8,5 +8,3 @@ export interface InitJutifiParams {
   clientId: string;
   account: string;
 }
-
-

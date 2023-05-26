@@ -1,4 +1,5 @@
 import type { StyleProp, ViewStyle } from 'react-native/types';
+
 export interface NativeProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: object;

@@ -56,4 +56,42 @@ describe('BankAccountForm', () => {
     expect(renderingTime).toBeLessThan(timeLimit);
   });
 
+  it('renders correctly on Android', () => {
+    jest.mock('react-native', () => {
+      const RN = jest.requireActual('react-native');
+      RN.Platform.OS = 'android';
+      return RN;
+    });
+  
+    const { getByTestId } = render(
+      <BankAccountForm
+        open={true}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
+      />
+    );
+  
+    const bankAccountForm = getByTestId('bank-account-form');
+    expect(bankAccountForm).toBeDefined();
+  });
+
+  it('renders correctly on iOS', () => {
+    jest.mock('react-native', () => {
+      const RN = jest.requireActual('react-native');
+      RN.Platform.OS = 'ios';
+      return RN;
+    });
+  
+    const { getByTestId } = render(
+      <BankAccountForm
+        open={true}
+        onClose={onCloseMock}
+        onSubmit={onSubmitMock}
+      />
+    );
+  
+    const bankAccountForm = getByTestId('bank-account-form');
+    expect(bankAccountForm).toBeDefined();
+  });  
+  
 });

@@ -200,7 +200,7 @@ The **`JustifiProvider`** initializes the provider with your clientId and **`acc
 
 This file defines the **BankAccountForm** component, which renders a native view that allows users to input their bank account information.
 
-**BankAccountFormProps**
+#### **BankAccountFormProps**
   This interface defines the props for the BankAccountForm component.
 
 ``` Typescript
@@ -266,7 +266,7 @@ This file defines the **BankAccountForm** component, which renders a native view
 };
 ```
 
-The **BankAccountForm** component renders a **BankAccountNative** component, which is a native view that allows users to input their bank account information. The component accepts various props such as style, *`styleOverrides`*, open, *`onClose`*, and *`onSubmit`* to customize its behavior and appearance.
+The **BankAccountForm** component renders a **BankAccountNative** component, which is a native view that allows users to input their bank account information. The component accepts various props such as style, *`styleOverrides`*, **`open`**, *`onClose`*, and *`onSubmit`* to customize its behavior and appearance.
 
 
 ## BankAccountForm.d.ts
@@ -327,20 +327,20 @@ Defines the TypeScript types for the BankAccountForm component and its props. Ty
     // Define state types here, if any
   }
 ```
-**BankAccountFormView**
+#### **BankAccountFormView**
   Defines the structure and props for the BankAccountFormView component:
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `Styles.styleOverrides` | `object` | Overrides for the default component styles.|
 | `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-| `error` | `string | null` | An error message to display, if any.|
+| `error` | `string - null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
-**BankAccountFormState**
+#### **BankAccountFormState**
   Defines the state for the BankAccountForm component.
 
-**BankAccountFormProps**
+#### **BankAccountFormProps**
   Defines the props for the BankAccountForm component:
 
 | Prop Name | Type | Description |
@@ -348,7 +348,7 @@ Defines the TypeScript types for the BankAccountForm component and its props. Ty
 | `style` | `StyleProp<ViewStyle>` | Styles for the BankAccountForm component.|
 | `styleOverrides` | `object` | Overrides for the default component styles.|
 | `loading` | `boolean` |A boolean value indicating whether the component is currently loading data.|
-| `error	` | `string | null` | An error message to display, if any.|
+| `error	` | `string - null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
 Please make sure to adjust the import paths and file locations as per your project structure.
@@ -413,7 +413,7 @@ The **CardFormView** component accepts various props such as **`style`**, **`sty
 This file defines the CardForm component, which renders a native view that allows users to input their credit/debit card information for payment processing.
 
 #### Interfaces
-**CardFormProps**
+#### **CardFormProps**
   This interface defines the props for the CardForm component.
 
 ``` Typescript
@@ -433,8 +433,8 @@ This file defines the CardForm component, which renders a native view that allow
 | `style` | `StyleProp<ViewStyle>` | Custom styles for the component. |
 | `styleOverrides` | `object` | Custom style overrides for specific sub-components. |
 | `open` | `boolean` | A boolean value indicating whether the card form is open. |
-| `onClose` | `() => void` | A function to be called when the card form is closed. |
-| `onSubmit` | `(event: { nativeEvent: { statusCode: number; data: any; error: any } }) => void	` | A function that will be called when the user submits the card form. |
+| `onClose` | `function` | A function to be called when the card form is closed. |
+| `onSubmit` | `function` | A function that will be called when the user submits the card form. |
 
 #### **CardForm** 
   The **CardForm** component is defined as follows:
@@ -487,8 +487,8 @@ The CardForm component renders a native view that allows users to input their cr
 | `style` | `StyleProp<ViewStyle>` | Custom styles for the component. |
 | `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component. |
 | `open` | `boolean` | A boolean value indicating whether the card form is open. |
-| `onClose` | `() => void` | A function to be called when the card form is closed. |
-| `onSubmit` | `(event: { nativeEvent: { statusCode: number; data: any; error: any } }) => void` | A function that will be called when the user submits the card form, providing the status code, data, and error in the nativeEvent. |
+| `onClose` | `function` | A function to be called when the card form is closed. |
+| `onSubmit` | `function` | A function that will be called when the user submits the card form, providing the status code, data, and error in the nativeEvent. |
 
 Please make sure to adjust the import paths and file locations as per your project structure.
 
@@ -506,7 +506,7 @@ Defines the TypeScript types for the JustifiProvider component and its props. Ty
   }
 ```
 
-**InitJutifiParams**
+#### **InitJutifiParams**
   Defines the parameters required to initialize the Justifi provider:
 
 ``` Typescript
@@ -516,23 +516,23 @@ Defines the TypeScript types for the JustifiProvider component and its props. Ty
 }
 ```
 
-**JustifiProviderProps**
+#### **JustifiProviderProps**
   Defines the props for the JustifiProvider component:
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `clientId` | `string` | The client ID for your Justifi account. |
 | `account` | `string` | The account name for your Justifi account. |
-| `children` | `React.ReactElement | React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
+| `children` | `React.ReactElement - React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
 
-**JustifiProvider**
+#### **JustifiProvider**
   The JustifiProvider component is used to initialize the Justifi provider in your React application.
 
 ``` Typescript
   <JustifiProvider {...props}>{children}</JustifiProvider>
 ```
 
-**JustifiProviderView**
+#### **JustifiProviderView**
   Defines the view for the JustifiProvider component:
 
 ``` Typescript
@@ -546,13 +546,13 @@ Make sure to replace path/to/JustifiProvider.d.ts with the actual path to the Ju
 
 The JustifiProvider component is used to initialize the Justifi provider in your React application. It accepts the following props:
 
-**Props**
+#### **Props**
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `clientId` | `string` | The client ID for your Justifi account. |
 | `account` | `string` | The account name for your Justifi account. |
-| `children` | `React.ReactElement | React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
+| `children` | `React.ReactElement - React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
 
 The JustifiProvider component initializes the Justifi provider using the provided **`clientId`** and **`account`** props. It should be placed at the top level of your component hierarchy to ensure that all child components have access to the Justifi provider.
 

@@ -11,7 +11,7 @@ import type { CardFormView } from '../types';
 import Modal from 'react-native-modal';
 import React from 'react';
 
-export interface Props extends CardFormView.CardFormNativeProps {
+export interface Props extends CardFormView.NativeProps {
   style?: StyleProp<ViewStyle>;
   styleOverrides?: object;
   open: boolean;

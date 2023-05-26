@@ -53,6 +53,16 @@ export default function App() {
     errorMessage: errorMessage,
   };
 
+  const handleBankAccountView = () => {
+    setOpenBank(true);
+    setView('bankAccount');
+  };
+
+  const handleCardView = () => {  
+    setOpenCard(true);
+    setView('card');
+  };
+
   const renderContent = () => {
     switch (view) {
       case 'bankAccount':
@@ -74,7 +84,6 @@ export default function App() {
                     Alert.alert('Payment method created successfully');
                     console.log('Payment method created successfully:', data);
                   } else {
-                    console.log('PARSED ERROR', error);
                     Alert.alert('Error ' + statusCode, error ?? '');
                     console.log(
                       `Error with status code ${statusCode}: ${error ?? ''}`
@@ -103,7 +112,6 @@ export default function App() {
                   Alert.alert('Payment method created successfully');
                   console.log('Payment method created successfully:', data);
                 } else {
-                  console.log('PARSED ERROR', error);
                   Alert.alert('Error ' + statusCode, error ?? '');
                   console.log(
                     `Error with status code ${statusCode}: ${error ?? ''}`
@@ -118,9 +126,9 @@ export default function App() {
           <>
             <Button
               title="Bank Account Form"
-              onPress={() => setView('bankAccount')}
+              onPress={handleBankAccountView}
             />
-            <Button title="Card Form" onPress={() => setView('card')} />
+            <Button title="Card Form" onPress={handleCardView} />
           </>
         );
     }

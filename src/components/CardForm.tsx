@@ -64,9 +64,7 @@ export const CardForm: React.FC<Props> = (props) => {
         accessibilityLabel="modal-backdrop"
       >
         <View style={styles.modalContent}>
-          <View
-            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
-          >
+          <View style={styles.center}>
             <View style={styles.barIcon} />
 
             <CardFormNative
@@ -102,6 +100,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   barIcon: {
     width: 60,

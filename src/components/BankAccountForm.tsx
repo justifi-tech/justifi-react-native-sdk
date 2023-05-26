@@ -63,9 +63,7 @@ export const BankAccountForm: React.FC<Props> = (props) => {
         style={styles.modal}
       >
         <View style={styles.modalContent}>
-          <View
-            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
-          >
+          <View style={styles.center}>
             <View style={styles.barIcon} />
 
             <BankAccountNative
@@ -101,6 +99,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flex: 1,
   },
   barIcon: {
     width: 60,

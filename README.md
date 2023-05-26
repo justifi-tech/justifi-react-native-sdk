@@ -32,44 +32,13 @@ Follow these steps to get started with the Justifi-react-Native SDK:
 ### Prerequisites
 - Node.js: Make sure you have Node.js installed on your machine. You can download it from the official [Node.js website](https://nodejs.org/en).
 
-#### Installation
-1.  Refer to our [Installation section](#installation)
-
-2. Install the required dependencies.
-This SDK relies on the following dependencies:
-
-- React Native: 0.71.4
-- React: 18.2.0
-- TypeScript: 4.5.2
-
-Make sure these dependencies are installed in your project. If you haven't already installed them, you can do so by running the following commands:
-
-**npm**
-```bash
-  npm install react-native@0.71.4 react@18.2.0 typescript@4.5.2
+```sh
+npm install justifi-react-native-sdk
 ```
 
-**yarn**
-```bash
-  yarn add react-native@0.71.4 react@18.2.0 typescript@4.5.2
-```
 
-#### Configuration
-
-1. Import the SDK module into your JavaScript file:
-``` Javascript
-  import { JustifiSDK } from 'justifi-react-native-sdk';
-```
-
-2. Initialize the SDK in your application:
-``` Javascript
-  const sdk = new JustifiSDK();
-```
-
-Congratulations! You have successfully installed and configured the Justifi-react-Native SDK in your project. Now you can proceed to the [Usage section](#usage) to learn how to use the SDK in your application.
 
 # Installation
-
 To install the Justifi-react-Native SDK in your project, you can use npm or yarn. Make sure you have Node.js installed.
 
 #### npm
@@ -89,6 +58,8 @@ yarn add justifi-react-native-sdk@0.1.0
 
 These dependencies are required for the Justifi-react-Native SDK to function properly. If you already have these dependencies installed, you can proceed with installing the SDK.
 
+
+
 # Usage
 
 To use the Justifi-react-Native SDK in your React Native application, follow these steps:
@@ -105,402 +76,493 @@ import { JustifiReactNativeSdkView } from "justifi-react-native-sdk";
 
 3. Explore the available methods and functionalities provided by the SDK by referring to the Documentation.
 
+
+
 # Examples
 
-Here are some examples that demonstrate how to use the Justifi-react-Native SDK in your React Native application:
+To help you get started with the Justifi React Native SDK, we provide the following usage examples. Each example demonstrates a specific use case and showcases the library's features. Follow the step-by-step instructions to integrate and utilize the SDK in your React Native projects.
 
-## Example 1: Initializing the SDK
+### Example 1: Collecting Bank Account and Card Payment Information
+  This example demonstrates how to collect bank account and card payment information from users using the Justifi React Native SDK. It showcases the integration with our secure payment processing system and highlights the key steps involved in handling payment submissions. By following this example, you will be able to enable seamless payment processing within your app.
 
-``` Typescript
-import { JustifiSDK } from 'justifi-react-native-sdk';
+**Step-by-step guide:**
+1. Install the Justifi React Native SDK using the provided installation instructions in the [Installation](#installation) section.
+2. Import the necessary components and modules from the SDK into your React Native project.
+3. Initialize the SDK with your API credentials and configure any required settings.
+4. Display a payment form in your app's UI, using the SDK's components and UI customization options.
+5. Implement the necessary event handlers and submission logic to handle user payment submissions securely.
+6. Test the payment flow within your app and verify the successful collection of bank account and card payment information.
+By following this example, you will be able to leverage the power of the Justifi React Native SDK to streamline payment collection processes in your app, providing a seamless user experience.
 
-// Initialize the SDK
-const sdk = new JustifiSDK();
+### Example 2: Customizing the UI
+  In this example, you will learn how to customize the user interface of the Justifi React Native SDK to match your app's branding and visual style. By utilizing the provided UI customization options, you can create a cohesive and consistent user experience within your app.
 
-// Use the SDK to perform actions
-sdk.doSomething();
+**Step-by-step guide:**
+1. Follow the [Installation](#installation) instructions provided in the Installation section to set up the Justifi React Native SDK in your project.
+2. Import the necessary components and modules from the SDK into your React Native project.
+3. Use the provided UI customization options to modify the appearance of the payment form and related UI elements.
+4. Apply your app's color scheme, typography, and branding guidelines to the SDK's UI components.
+5. Preview the customized UI within your app and ensure that it aligns with your desired visual style.
+By following this example, you will be able to seamlessly integrate the Justifi React Native SDK into your app's existing design language, creating a cohesive and branded payment experience for your users.
+
+Please note that these examples provide a starting point, and you can further explore the SDK's configuration options and customization hooks to adapt it to your specific requirements. 
+For more detailed information on customization and advanced usage, refer to the [Documentation](#documentation) section.
+
+### BankAccountForm Example
+  The following example demonstrates the usage of the `BankAccountForm` component to collect bank account information:
+
+```javascript
+  import React from 'react';
+  import { BankAccountForm } from 'justifi-react-native-sdk';
+
+  const MyBankAccountForm = () => {
+    const handleBankAccountSubmit = (event) => {
+      // Handle the submitted bank account data
+      const { statusCode, data, error } = event.nativeEvent;
+      console.log('Bank Account Submission:', { statusCode, data, error });
+      // Perform further actions or validations
+      // ...
+    };
+
+    return (
+      <div>
+        <h3>Bank Account Information</h3>
+        <BankAccountForm open={true} onClose={() => {}} onSubmit={handleBankAccountSubmit} />
+      </div>
+    );
+  };
+
+  export default MyBankAccountForm;
 ```
+In this example, we create a **`MyBankAccountForm`** component that includes the **`BankAccountForm`** component. We pass the necessary props such as **`open`**, **`onClose`**, and **`onSubmit`**.
+The **`onSubmit`** function receives an event object with the submitted bank account data, allowing you to handle the submission accordingly.
 
-## Example 2: Processing a Payment
 
-``` Typescript
-import { JustifiSDK } from 'justifi-react-native-sdk';
+### CardForm Example
+  The following example demonstrates the usage of the **CardForm** component to collect card payment information:
 
-// Initialize the SDK
-const sdk = new JustifiSDK();
+``` Javascript
+  import React from 'react';
+  import { CardForm } from 'justifi-react-native-sdk';
 
-// Collect payment information from the user
-const paymentInfo = collectPaymentInfo();
+  const MyCardForm = () => {
+    const handleCardSubmit = (event) => {
+      // Handle the submitted card data
+      const { statusCode, data, error } = event.nativeEvent;
+      console.log('Card Submission:', { statusCode, data, error });
+      // Perform further actions or validations
+      // ...
+    };
 
-// Process the payment using the SDK
-sdk.processPayment(paymentInfo)
-  .then((response) => {
-    // Handle the payment response
-    console.log(response);
-  })
-  .catch((error) => {
-    // Handle the payment error
-    console.error(error);
-  });
+    return (
+      <div>
+        <h3>Card Payment</h3>
+        <CardForm open={true} onClose={() => {}} onSubmit={handleCardSubmit} />
+      </div>
+    );
+  };
+
+  export default MyCardForm;
 ```
+In this example, we create a **`MyCardForm`** component that includes the **`CardForm`** component. 
+Similar to the previous example, we pass the necessary props and handle the **`onSubmit`** event to process the submitted card data.
 
-## Example 3: Customizing the UI
 
-``` Typescript
-import { JustifiSDK } from 'justifi-react-native-sdk';
+### JustifiProvider Example
+  The following example demonstrates the usage of the **`JustifiProvider`** component as a wrapper around your application:
 
-// Initialize the SDK
-const sdk = new JustifiSDK();
+``` Javascript
+  import React from 'react';
+  import { JustifiProvider } from 'justifi-react-native-sdk';
 
-// Customize the UI components
-sdk.setTheme('dark');
-sdk.setButtonColor('#ff0000');
+  const MyApp = () => {
+    const clientId = '_clientId'; // Replace with your actual clientId
+    const account = '_account'; // Replace with your actual account
+
+    return (
+      <JustifiProvider clientId={clientId} account={account}>
+        {/* Your application components */}
+      </JustifiProvider>
+    );
+  };
+
+  export default MyApp;
 ```
-These examples demonstrate different aspects of using the Justifi-react-Native SDK, such as initializing the SDK, processing payments, and customizing the UI. You can explore more examples and discover additional features in the Documentation.
+In this example, we create a **`MyApp`** component that wraps your application components with the **`JustifiProvider`**.
+The **`JustifiProvider`** initializes the provider with your clientId and **`account`**, enabling the integration of the library's functionality throughout your application.
+
 
 
 # Documentation
 
-## BankAccountForm.d.ts
-  Defines the TypeScript types for the BankAccountForm component and its props. TypeScript users can import these types to ensure type safety in their projects.
+
+## BankAccountForm.tsx
+
+This file defines the **BankAccountForm** component, which renders a native view that allows users to input their bank account information.
+
+**BankAccountFormProps**
+  This interface defines the props for the BankAccountForm component.
 
 ``` Typescript
-    import type { BankAccountFormProps } from './path/to/BankAccountForm.d.ts';
-
-    const MyComponent = () => {
-    const myProps: BankAccountFormProps = { ... };
-    return <BankAccountForm {...myProps} />;
-    }
+  interface BankAccountFormProps {
+    style?: StyleProp<ViewStyle>;
+    styleOverrides?: object;
+    open: boolean;
+    onClose: () => void;
+    onSubmit?: (event: {
+      nativeEvent: { statusCode: number; data: any; error: any };
+    }) => void;
+}
 ```
+                        
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `style` | `object` | Custom styles for the component. |
+| `styleOverrides` | `object` | Custom style overrides for specific sub-components. |
+| `open` | `boolean` | A boolean value indicating whether the bank account form is open.|
+| `onClose` | `function` | A function to be called when the bank account form is closed. |
+| `onSubmit` | `function` | A function that will be called when the user submits the bank account form, providing the status code, data, and error in the nativeEvent. |
+
+#### BankAccountForm
+  The **BankAccountForm** component is defined as follows:
+
+``` Typescript
+  const BankAccountForm: React.FC<BankAccountFormProps> = (props) => {
+  const { open, onClose } = props;
+
+  return (
+    <View style={styles.flexView} testID="bank-account-form">
+      <StatusBar />
+
+      <Modal
+        onBackdropPress={onClose}
+        onBackButtonPress={onClose}
+        isVisible={open}
+        swipeDirection="down"
+        onSwipeComplete={onClose}
+        animationIn="bounceInUp"
+        animationOut="bounceOutDown"
+        animationInTiming={900}
+        animationOutTiming={500}
+        backdropTransitionInTiming={1000}
+        backdropTransitionOutTiming={500}
+        style={styles.modal}
+      >
+        <View style={styles.modalContent}>
+          <View
+            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
+          >
+            <View style={styles.barIcon} />
+
+            <BankAccountNative
+              {...props}
+              {...(Platform.OS === 'ios' ? props.styleOverrides : {})}
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
+```
+
+The **BankAccountForm** component renders a **BankAccountNative** component, which is a native view that allows users to input their bank account information. The component accepts various props such as style, *`styleOverrides`*, open, *`onClose`*, and *`onSubmit`* to customize its behavior and appearance.
+
+
+## BankAccountForm.d.ts
+
+Defines the TypeScript types for the BankAccountForm component and its props. TypeScript users can import these types to ensure type safety in their projects.
+.
+
+```typescript
+  import { StyleProp, ViewStyle } from 'react-native';
+
+  /**
+   * Defines the styles for the BankAccountFormView component.
+   */
+  export interface BankAccountFormView {
+    Styles: {
+      /**
+       * Overrides for the default component styles.
+       */
+      styleOverrides?: object;
+    };
+
+    /**
+     * A boolean value indicating whether the component is currently loading data.
+     */
+    loading: boolean;
+    /**
+     * An error message to display, if any.
+     */
+    error: string | null;
+    /**
+     * A boolean value indicating whether the form was successfully submitted.
+     */
+    success: boolean;
+  }
+
+  /**
+   * Defines the props for the BankAccountForm component.
+   */
+  export interface BankAccountFormProps extends BankAccountFormView {
+    /**
+     * Styles for the BankAccountForm component.
+     */
+    style?: StyleProp<ViewStyle>;
+    /**
+     * Overrides for the default component styles.
+     */
+    styleOverrides?: object;
+  }
+
+  /**
+   * Defines the state for the BankAccountForm component.
+   */
+  export interface BankAccountFormState {
+    // Define state types here, if any
+  }
+
+  export interface BankAccountFormView {
+    // Define state types here, if any
+  }
+```
+**BankAccountFormView**
+  Defines the structure and props for the BankAccountFormView component:
+
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `Styles.styleOverrides` | `object` | Overrides for the default component styles.|
+| `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
+| `error` | `string | null` | An error message to display, if any.|
+| `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
+
+**BankAccountFormState**
+  Defines the state for the BankAccountForm component.
+
 **BankAccountFormProps**
-Defines the props for the BankAccountForm component:
+  Defines the props for the BankAccountForm component:
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `style` | `StyleProp<ViewStyle>` | Styles for the BankAccountForm component.|
 | `styleOverrides` | `object` | Overrides for the default component styles.|
-
-**BankAccountFormState**
-Defines the state for the BankAccountForm component.
-
-**BankAccountForm**
-The BankAccountForm component renders a form for entering bank account information.
-
-``` Typescript
-    <BankAccountForm {...props} />
-```
-**BankAccountFormView**
-Defines the view for the BankAccountForm component:
-
-    
-| Prop Name | Type | Description |
-| --- | --- | --- |
-| `loading` | `boolean` | A boolean value indicating whether the component is currently loading data.|
-| `error` | `string - null` | An error message to display, if any.|
+| `loading` | `boolean` |A boolean value indicating whether the component is currently loading data.|
+| `error	` | `string | null` | An error message to display, if any.|
 | `success` | `boolean` | A boolean value indicating whether the form was successfully submitted.|
 
-## BankAccountForm.js
-  This file exports a **`BankAccountForm`** component that renders a native **`BankAccountFormView`** component using the **`requireNativeComponent`** method from **`react-native`**.
+Please make sure to adjust the import paths and file locations as per your project structure.
 
-``` typescript
-    import { BankAccountForm } from './src/components/BankAccountForm';
 
-// Example 1: Initializing the component
-const bankAccountFormRef = React.useRef(null);
-<BankAccountForm ref={bankAccountFormRef} styleOverrides={{ height: 300 }} />
 
-// Example 2: Processing payments
-const isValid = await bankAccountFormRef.current?.validate();
-const token = await bankAccountFormRef.current?.tokenize();
-
-// Example 3: Handling events
-function handleFormSubmission() {
-  bankAccountFormRef.current?.validate().then((isValid) => {
-    if (isValid) {
-      bankAccountFormRef.current?.tokenize().then((token) => {
-        // Handle successful payment token
-      });
-    } else {
-      // Handle validation error
-    }
-  });
-}
-  ```
-Please note that the **`BankAccountFormView`** component should be properly configured and initialized before using the BankAccountForm component. 
-For more information, refer to the SDK documentation.
-
-## BankAccountForm.tsx
- This file defines the **`BankAccountForm`** component, which renders a native view that allows users to input their bank account information for payment processing.
-
-#### Interfaces
-    
- **`BankAccountFormProps`**
-    This interface defines the props for the **`BankAccountForm`** component
-
-``` Typescript 
-        interface BankAccountFormProps extends AccessibilityProps {
-                style?: StyleProp<ViewStyle>;
-                styleOverrides?: object;
-            }
-```
-                        
-| Prop Name | Type | Description |
-| --- | --- | --- |
-| `style` | `StyleProp<ViewStyle>` | Custom styles for the component |
-| `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component |
-
-#### **`BankAccountForm`** Component
-    The **`BankAccountForm`** component is defined as follows:
-
- ``` typescript
-            const BankAccountForm = forwardRef<BankAccountFormView.Styles, BankAccountFormProps>(
-            function BankAccountForm(props: BankAccountFormProps, ref: React.Ref<BankAccountFormView.Styles>) {
-            const styleOverrides = { ...props.styleOverrides };
-
-        return (
-        <     BankAccountFormNative
-                {...props}
-                {...(styleOverrides ? styleOverrides : null)}
-                ref={ref}
-        />)
-        ;}
-    ,);
-```
-| Prop Name | Type | Description |
-| --- | --- | --- |
-| `props` | `BankAccountFormProps` | Props for the component |
-| `ref` | `React.Ref<BankAccountFormView.Styles>`| Ref for the component |
-
-The **`BankAccountForm`** component renders a **`BankAccountFormNative`** component, which is a native view that allows users to input their bank account information. The **`styleOverrides`** prop is used to apply custom style overrides to specific sub-components of the **`BankAccountFormNative`** component.
-
-#### Dependencies
-The **`BankAccountForm.tsx`** file has the following dependencies:
-
-   * react-native
-   * ../types
-   * react
-
-### Bank Account Form Functions
-This module exports two functions for interacting with a native bank account form component: **validate()** and **tokenize()**. These functions are async and return promises.
-
-### validate()
-The **validate()** function validates the bank account information entered by the user in the form.
-
-``` Typescript
-        async function validate(): Promise<boolean> {
-         Call the native validate() function and return the result as a boolean.
-    return new Promise(resolve => {
-            BankAccountFormFunctions.validate((isValid) =>{
-                resolve(isValid);
-                });
-            });
-        }
-```
-
-### tokenize()
-The **tokenize()** function takes the validated bank account information and generates a token that can be used for processing payments.
-
-``` typescript
-    async function tokenize(): Promise<string> {
-    // Call the native tokenize() function and return the result as a string.
-    return new Promise(resolve => {
-        BankAccountFormFunctions.tokenize((token) => {
-        resolve(token);
-        });
-    });
-    }
-```
-To use these functions in your project, import them like this:
-
-``` Typescript 
-       import { validate, tokenize } from './path/to/bankAccountFormFunctions';
-```
-
-Then, call the functions as needed:
-
-``` Typescript 
-        const isValid = await validate();
-        const token = await tokenize();
-```
-    
 ## CardForm.d.ts
 
 Defines the TypeScript types for the CardForm component and its props. TypeScript users can import these types to ensure type safety in their projects.
 
-``` Typescript 
-      import type { CardFormProps } from './path/to/CardForm.d.ts';
+```typescript
+  import * as React from 'react';
+  import type { StyleProp, ViewStyle } from 'react-native';
 
-     const MyComponent = () => {
-        const myProps: CardFormProps = { ... };
-        return <CardForm {...myProps} />;
-       }
+  export interface CardFormNativeProps {
+    style?: StyleProp<ViewStyle>;
+    styleOverrides?: object;
+    onSubmit?: (event: {
+      nativeEvent: { statusCode: number; data: any; error: any };
+    }) => void;
+  }
+
+  export interface Props extends CardFormNativeProps {
+    open: boolean;
+    onClose: () => void;
+  }
+
+  export class CardFormView extends React.Component<Props> {}
+
+  export default CardFormView;
 ```
-### CardFormProps
-Defines the props for the CardForm component:
+
+### CardFormNativeProps
+  Defines the props for the CardForm component:
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
-| `onSubmit` | `(cardDetails: CardDetails) => void` | A function that will be called when the user submits the card form.|
+| `style` | `StyleProp<ViewStyle>` | Custom styles for the component.|
+| `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component.|
+| `styleOverrides` | `function` | A function that will be called when the user submits the card form, providing the status code, data, and error in the nativeEvent.|
 
-### CardDetails
-Defines the structure of the object containing the card details:
+### Props
+  Defines the props for the CardFormView component:
 
-``` Typescript
-  interface CardDetails {
-  cardNumber: string;
-  expiryDate: string;
-  cvc: string;
-}
-```
-
-### CardForm
-The CardForm component renders a form for entering credit/debit card information.
-
-``` Typescript
-  <CardForm {...props} />
-```
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `open` | `boolean` | A boolean value indicating whether the card form is open.|
+| `onClose` | `function` | A function to be called when the card form is closed.|
 
 ### CardFormView
-Defines the view for the CardForm component:
-
-                      
-| Prop Name | Type | Description |
-| --- | --- | --- |
-| `loading` | `boolean` | A boolean value indicating whether the component is currently loading data. |
-| `error` | `string - null` |An error message to display, if any. |
-| `success` | `boolean` |A boolean value indicating whether the form was successfully submitted. |
-
-## CardForm.js
-
-This file exports a **CardForm** component that renders a native **CardFormView** component using the **requireNativeComponent** method from **react-native**.
+  The CardFormView component renders a form for entering credit/debit card information.
 
 ``` Typescript
-  import { CardForm } from './src/components/CardForm';
-
-// Example 1: Initializing the component
-const cardFormRef = React.useRef(null);
-<CardForm ref={cardFormRef} styleOverrides={{ height: 300 }} />
-
-// Example 2: Processing payments
-const isValid = await cardFormRef.current?.validate();
-const token = await cardFormRef.current?.tokenize();
-
-// Example 3: Handling events
-function handleFormSubmission() {
-  cardFormRef.current?.validate().then((isValid) => {
-    if (isValid) {
-      cardFormRef.current?.tokenize().then((token) => {
-        // Handle successful payment token
-      });
-    } else {
-      // Handle validation error
-    }
-  });
-}
+  export class CardFormView extends React.Component<Props> {}
 ```
 
-Please note that the **CardFormView** component should be properly configured and initialized before using the CardForm component. For more information, refer to the SDK documentation.
+The **CardFormView** component accepts various props such as **`style`**, **`styleOverrides`**, **`open`**, **`onClose`**, and **`onSubmit`** to customize its behavior and appearance.
 
 
 ## CardForm.tsx
 
-This file defines the **CardForm** component, which renders a native view that allows users to input their credit/debit card information for payment processing.
+This file defines the CardForm component, which renders a native view that allows users to input their credit/debit card information for payment processing.
 
 #### Interfaces
 **CardFormProps**
-This interface defines the props for the CardForm component.
+  This interface defines the props for the CardForm component.
 
 ``` Typescript
-  interface CardFormProps extends AccessibilityProps {
-  style?: StyleProp<ViewStyle>;
-  styleOverrides?: object;
-}
+    interface Props {
+      style?: StyleProp<ViewStyle>;
+      styleOverrides?: object;
+      open: boolean;
+      onClose: () => void;
+      onSubmit?: (event: {
+        nativeEvent: { statusCode: number; data: any; error: any };
+      }) => void;
+  }
 ```
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
 | `style` | `StyleProp<ViewStyle>` | Custom styles for the component. |
-| `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component. |
+| `styleOverrides` | `object` | Custom style overrides for specific sub-components. |
+| `open` | `boolean` | A boolean value indicating whether the card form is open. |
+| `onClose` | `() => void` | A function to be called when the card form is closed. |
+| `onSubmit` | `(event: { nativeEvent: { statusCode: number; data: any; error: any } }) => void	` | A function that will be called when the user submits the card form. |
 
 #### **CardForm** 
-The **CardForm** component is defined as follows:
+  The **CardForm** component is defined as follows:
 
 ``` Typescript
-const CardForm = forwardRef<CardFormView.Styles, CardFormProps>(
-  function CardForm(props: CardFormProps, ref: React.Ref<CardFormView.Styles>) {
-    const styleOverrides = { ...props.styleOverrides };
+export const CardForm: React.FC<Props> = (props) => {
+  const { open, onClose } = props;
 
-    return (
-      <CardFormNative
-        {...props}
-        {...(styleOverrides ? styleOverrides : null)}
-        ref={ref}
-      />
-    );
-  },
-);
+  return (
+    <View style={styles.flexView} testID="card-form">
+      <StatusBar />
+
+      <Modal
+        onBackdropPress={onClose}
+        onBackButtonPress={onClose}
+        isVisible={open}
+        swipeDirection="down"
+        onSwipeComplete={onClose}
+        animationIn="bounceInUp"
+        animationOut="bounceOutDown"
+        animationInTiming={900}
+        animationOutTiming={500}
+        backdropTransitionInTiming={1000}
+        backdropTransitionOutTiming={500}
+        style={styles.modal}
+        accessibilityLabel="modal-backdrop"
+      >
+        <View style={styles.modalContent}>
+          <View
+            style={[styles.center, Platform.OS !== 'ios' ? { flex: 1 } : {}]}
+          >
+            <View style={styles.barIcon} />
+
+            <CardFormNative
+              {...props}
+              {...(Platform.OS === 'ios' ? props.styleOverrides : {})}
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+};
 ```
+
+The CardForm component renders a native view that allows users to input their credit/debit card information. It accepts the following props:
 
 | Prop Name | Type | Description |
 | --- | --- | --- |
-| `props` | `CardFormProps` | Props for the component. |
-| `ref` | `React.Ref<CardFormView.Styles>` | Ref for the component. |
+| `style` | `StyleProp<ViewStyle>` | Custom styles for the component. |
+| `styleOverrides` | `object` | Custom style overrides for specific sub-components of the component. |
+| `open` | `boolean` | A boolean value indicating whether the card form is open. |
+| `onClose` | `() => void` | A function to be called when the card form is closed. |
+| `onSubmit` | `(event: { nativeEvent: { statusCode: number; data: any; error: any } }) => void` | A function that will be called when the user submits the card form, providing the status code, data, and error in the nativeEvent. |
 
-The **CardForm** component renders a **CardFormNative** component, which is a native view that allows users to input their credit/debit card information. The **styleOverrides** prop is used to apply custom style overrides to specific sub-components of the CardFormNative component.
+Please make sure to adjust the import paths and file locations as per your project structure.
 
-#### Dependencies
-Dependencies
-The **CardForm.tsx** file has the following dependencies:
 
-- react-native
-- ../types
-- react
+## JustifiProvider.d.ts
 
-### Card Form Functions
-This module exports two functions for interacting with a native card form component: **validate()** and **tokenize().** These functions are async and return promises.
-
-### validate()
-The **validate()** function validates the card information entered by the user in the form.
+Defines the TypeScript types for the JustifiProvider component and its props. TypeScript users can import these types to ensure type safety in their projects.
 
 ``` Typescript
-async function validate(): Promise<boolean> {
-  // Call the native validate() function and return the result as a boolean.
-  return new Promise((resolve) => {
-    CardFormFunctions.validate((isValid) => {
-      resolve(isValid);
-    });
-  });
+  import type { JustifiProviderProps } from './path/to/JustifiProvider.d.ts';
+
+  const MyComponent = () => {
+    const myProps: JustifiProviderProps = { ... };
+    return <JustifiProvider {...myProps} />;
+  }
+```
+
+**InitJutifiParams**
+  Defines the parameters required to initialize the Justifi provider:
+
+``` Typescript
+  interface InitJutifiParams {
+  clientId: string;
+  account: string;
 }
 ```
 
-### tokenize()
-The **tokenize()** function takes the validated card information and generates a token that can be used for processing payments.
+**JustifiProviderProps**
+  Defines the props for the JustifiProvider component:
+
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `clientId` | `string` | The client ID for your Justifi account. |
+| `account` | `string` | The account name for your Justifi account. |
+| `children` | `React.ReactElement | React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
+
+**JustifiProvider**
+  The JustifiProvider component is used to initialize the Justifi provider in your React application.
 
 ``` Typescript
-  async function tokenize(): Promise<string> {
-  // Call the native tokenize() function and return the result as a string.
-  return new Promise((resolve) => {
-    CardFormFunctions.tokenize((token) => {
-      resolve(token);
-    });
-  });
+  <JustifiProvider {...props}>{children}</JustifiProvider>
+```
+
+**JustifiProviderView**
+  Defines the view for the JustifiProvider component:
+
+``` Typescript
+  interface JustifiProviderView {
+  // Define view types here, if any
 }
 ```
+Make sure to replace path/to/JustifiProvider.d.ts with the actual path to the JustifiProvider.d.ts file in your project.
 
-To use these functions in your project, import them like this:
-``` Typescript
-  import { validate, tokenize } from './path/to/cardFormFunctions'; 
-```
+## JustifiProvider.tsx
 
-Then, call the functions as needed:
-``` Typescript
-  const isValid = await validate();
-  const token = await tokenize();
-```
+The JustifiProvider component is used to initialize the Justifi provider in your React application. It accepts the following props:
+
+**Props**
+
+| Prop Name | Type | Description |
+| --- | --- | --- |
+| `clientId` | `string` | The client ID for your Justifi account. |
+| `account` | `string` | The account name for your Justifi account. |
+| `children` | `React.ReactElement | React.ReactElement[]` | The child component(s) to be wrapped by the JustifiProvider. |
+
+The JustifiProvider component initializes the Justifi provider using the provided **`clientId`** and **`account`** props. It should be placed at the top level of your component hierarchy to ensure that all child components have access to the Justifi provider.
+
+
 
 ## Contributing
 
 See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the repository and the development workflow.
+
+
 
 ## License
 

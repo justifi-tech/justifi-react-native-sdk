@@ -8,5 +8,10 @@ export interface CardFormNativeProps {
   }) => void;
 }
 
-export type CardFormProps = CardFormNativeProps;
+export interface CardFormView {
+  // Add any additional props used in CardForm.tsx
+  open: boolean;
+  onClose: () => void;
+}
 
+export type CardFormProps = CardFormNativeProps & CardFormView;

@@ -66,15 +66,42 @@ To use the Justifi-react-Native SDK in your React Native application, follow the
 
 1. Import the SDK module into your JavaScript file:
 ```js
-import { JustifiReactNativeSdkView } from "justifi-react-native-sdk";
+  import {
+    BankAccountFormView,
+    CardFormView,
+    JustifiProvider,
+  } from 'justifi-react-native-sdk';
 ```
 
 2. Perform actions using and customizing the SDK:
 ``` Typescript
-<JustifiReactNativeSdkView color="tomato" />
+  <JustifiProvider
+    clientId="_clientId"
+    account="_account"
+    >
+     
+    <BankAccountFormView
+                style={styles.view}
+                styleOverrides={styleOverrides}
+                open={openBank}
+                onClose={() => {
+                  setOpenBank(false);
+                }}
+                onSubmit={({ nativeEvent }) => {
+                  const { statusCode, data, error } = nativeEvent;
+
+                  if (statusCode === 201) {
+                    console.log('Payment method created successfully:', data);
+                  } else {
+                    console.log(`Error with status code ${statusCode}: ${error ?? ''}`
+                    );
+                  }
+                }}
+              />
+   </JustifiProvider>
 ```
 
-3. Explore the available methods and functionalities provided by the SDK by referring to the Documentation.
+3. Explore the available methods and functionalities provided by the SDK by referring to the [Documentation](#documentation).
 
 
 

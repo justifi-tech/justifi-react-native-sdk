@@ -42,10 +42,3 @@ export interface BankAccountFormProps extends BankAccountFormView {
 /**
  * Defines the state for the BankAccountForm component.
  */
-export interface BankAccountFormState {
-  // Define state types here, if any
-}
-
-export interface BankAccountFormView {
-  // Define state types here, if any
-}

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { StyleProp, ViewStyle } from 'react-native';
 
 export interface CardFormNativeProps {
@@ -8,10 +9,11 @@ export interface CardFormNativeProps {
   }) => void;
 }
 
-export interface CardFormView {
-  // Add any additional props used in CardForm.tsx
+export interface Props extends CardFormNativeProps {
   open: boolean;
   onClose: () => void;
 }
 
-export type CardFormProps = CardFormNativeProps & CardFormView;
+export class CardFormView extends React.Component<Props> {}
+
+export default CardFormView;

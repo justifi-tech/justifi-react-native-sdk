@@ -1,1 +1,5 @@
 example/**
+
+src/types/components/CardForm.d.ts
+src/types/components/BankAccountForm.d.ts
+src/types/components/BankAccountForm.tsx
